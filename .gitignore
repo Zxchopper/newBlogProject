@@ -5,7 +5,7 @@
 *.class
 out
 .idea
-
+wyc
 Test.class
 Test.java
 test*
