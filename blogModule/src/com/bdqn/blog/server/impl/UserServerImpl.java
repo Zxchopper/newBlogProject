@@ -1,6 +1,7 @@
 package com.bdqn.blog.server.impl;
 
 import com.bdqn.blog.dao.UserMapper;
+
 import com.bdqn.blog.pojo.User;
 import com.bdqn.blog.server.UserServer;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class UserServerImpl  implements UserServer{
    private UserMapper userMapperser;
     @Override
     public User getLoginUser(String name, String pwd) throws Exception {
-        return userMapperser.getLoginUser(name,pwd);
+       /* return userMapperser.getLoginUser(name,pwd);*/
+       return null;
     }
 }
