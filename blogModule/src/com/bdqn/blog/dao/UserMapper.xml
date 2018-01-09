@@ -41,7 +41,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <result property="floor" column="floor"></result>
         </collection>
     </resultMap>
+
     <select id="getBlogCommentListByUserId" resultMap="BlogComment">
         SELECT u.uid,c.*  FROM user u,blogcomment c where uid=#{uid}
+    </select>
+
+    <select id="getLoginUser" resultType="User">
+        select * from user where userName=#{name} and userPassword=#{pwd}
     </select>
 </mapper>
