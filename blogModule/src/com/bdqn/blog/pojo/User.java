@@ -2,18 +2,21 @@ package com.bdqn.blog.pojo;
 
 import java.util.Date;
 
+/**
+ * 用户表
+ */
 public class User {
-	private Integer uid;
-	private String userName;
-	private String userPassword;
-	private String nickName;
-	private String name;
-	private String sex;
-	private String email;
-	private String status;
-	private double money;
-	private Integer integral;
-	private String describe;
+	private Integer uid;//主键
+	private String userName;//登录名
+	private String userPassword;//登录密码
+	private String nickName;//昵称
+	private String name;//真实姓名
+	private String sex;//性别
+	private String email;//邮箱
+	private String status;//状态
+	private double money;//余额
+	private Integer integral;//论坛积分
+	private String describe;//个性签名
 	public Integer getUid() {
 		return uid;
 	}

@@ -2,15 +2,18 @@ package com.bdqn.blog.pojo;
 
 import java.util.Date;
 
+/**
+ * 下载
+ */
 public class Download {
 
-	private Integer did;
-	private Date createTime;
-	private String title;
-	private String describle;
-	private String downloadPath;
-	private Integer downloadAmout;
-	private Double price;
+	private Integer did;//主键
+	private Date createTime;//创建时间
+	private String title;//主题
+	private String describle;//描述
+	private String downloadPath;//文件下载路径
+	private Integer downloadAmout;//下载次数
+	private Double price;//下载金额
 	public Integer getDid() {
 		return did;
 	}

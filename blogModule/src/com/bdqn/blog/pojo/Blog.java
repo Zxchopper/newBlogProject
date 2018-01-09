@@ -2,14 +2,16 @@ package com.bdqn.blog.pojo;
 
 import java.util.Date;
 
-
+/**
+ * 博客
+ */
 public class Blog {
 
-	private Integer bid;
-	private Date createTime;
-	private String title;
-	private String contentPath;
-	private Integer readAmout;
+	private Integer bid;//主键
+	private Date createTime;//创建时间
+	private String title;//主题
+	private String contentPath;//内容文本路径
+	private Integer readAmout;//访问数量
 	public Integer getBid() {
 		return bid;
 	}
