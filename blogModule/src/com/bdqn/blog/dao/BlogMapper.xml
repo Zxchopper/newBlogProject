@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bdqn.blog.dao.BlogMapper">
-<insert id="insertBlog" parameterType="Blog">
-	insert into Blog
-	(bid,createTime,title,contentPath,readAmout)
-	values(#{bid},#{createTime},#{title},#{contentPath},#{readAmout})
-</insert>
-<update id="updateBlog" parameterType="Blog">
-	update Blog
-	<trim prefix="set" suffixOverrides="," suffix="where bid=#{bid}">
-		<if test="createTime!=null">createTime=#{createTime},</if>
-		<if test="title!=null">title=#{title},</if>
-		<if test="contentPath!=null">contentPath=#{contentPath},</if>
-		<if test="readAmout!=null">readAmout=#{readAmout},</if>
-	</trim>
-</update>
-<delete id="deleteBlog" parameterType="int">
-	delete from Blog where bid=#{bid}
-</delete>
+    <insert id="insertBlog" parameterType="Blog">
+        insert into Blog
+        (bid,createTime,title,contentPath,readAmout)
+        values(#{bid},#{createTime},#{title},#{contentPath},#{readAmout})
+    </insert>
+    <update id="updateBlog" parameterType="Blog">
+        update Blog
+        <trim prefix="set" suffixOverrides="," suffix="where bid=#{bid}">
+            <if test="createTime!=null">createTime=#{createTime},</if>
+            <if test="title!=null">title=#{title},</if>
+            <if test="contentPath!=null">contentPath=#{contentPath},</if>
+            <if test="readAmout!=null">readAmout=#{readAmout},</if>
+        </trim>
+    </update>
+    <delete id="deleteBlog" parameterType="int">
+	    delete from Blog where bid=#{bid}
+    </delete>
+
+    <resultMap id="BlogComment" type="Blog">
+        <id property="bid" column="bid"></id>
+        <collection property="blogCommentList" ofType="BlogComment">
+            <id property="id" column="id"></id>
+            <result property="createTime" column="createTime"></result>
+            <result property="content" column="content"></result>
+            <result property="floor" column="floor"></result>
+        </collection>
+    </resultMap>
+    <select id="getBlogCommentListByBlogId" resultMap="BlogComment">
+        SELECT b.bid,c.*  FROM  blog b,blogcomment c WHERE bid=#{bid};
+    </select>
 </mapper>
