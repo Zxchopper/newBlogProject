@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.blog.pojo.ForumMapper">
+<insert id="insertForum" parameterType="Forum">
+	insert into Forum
+	(fid,createTime,content,readAmout,rewardIntegral)
+	values(#{fid},#{createTime},#{content},#{readAmout},#{rewardIntegral})
+</insert>
+<update id="updateForum" parameterType="Forum">
+	update Forum
+	<trim prefix="set" suffixOverrides="," suffix="where fid=#{fid}">
+		<if test="createTime!=null">createTime=#{createTime},</if>
+		<if test="content!=null">content=#{content},</if>
+		<if test="readAmout!=null">readAmout=#{readAmout},</if>
+		<if test="rewardIntegral!=null">rewardIntegral=#{rewardIntegral},</if>
+	</trim>
+</update>
+<delete id="deleteForum" parameterType="int">
+	delete from Forum where fid=#{fid}
+</delete>
+</mapper>

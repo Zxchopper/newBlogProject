@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.blog.pojo.BlogMapper">
+<insert id="insertBlog" parameterType="Blog">
+	insert into Blog
+	(bid,createTime,title,contentPath,readAmout)
+	values(#{bid},#{createTime},#{title},#{contentPath},#{readAmout})
+</insert>
+<update id="updateBlog" parameterType="Blog">
+	update Blog
+	<trim prefix="set" suffixOverrides="," suffix="where bid=#{bid}">
+		<if test="createTime!=null">createTime=#{createTime},</if>
+		<if test="title!=null">title=#{title},</if>
+		<if test="contentPath!=null">contentPath=#{contentPath},</if>
+		<if test="readAmout!=null">readAmout=#{readAmout},</if>
+	</trim>
+</update>
+<delete id="deleteBlog" parameterType="int">
+	delete from Blog where bid=#{bid}
+</delete>
+</mapper>
