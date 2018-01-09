@@ -1,6 +1,6 @@
 package com.bdqn.blog.pojo;
 
-import java.util.Date;
+import java.util.List;
 
 /**
  * 用户表
@@ -17,6 +17,7 @@ public class User {
 	private double money;//余额
 	private Integer integral;//论坛积分
 	private String describe;//个性签名
+	private List<BlogComment> blogCommentList;//用户评论集合
 	public Integer getUid() {
 		return uid;
 	}
@@ -83,5 +84,7 @@ public class User {
 	public void setDescribe(String describe) {
 		this.describe = describe;
 	}
+	public List<BlogComment> getBlogCommentList() { return blogCommentList; }
+	public void setBlogCommentList(List<BlogComment> blogCommentList) { this.blogCommentList = blogCommentList; }
 
 }

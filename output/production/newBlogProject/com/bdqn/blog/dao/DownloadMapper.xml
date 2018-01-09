@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.blog.dao.DownloadMapper">
+<insert id="insertDownload" parameterType="Download">
+	insert into Download
+	(did,createTime,title,describle,downloadPath,downloadAmout,
+	price)
+	values(#{did},#{createTime},#{title},#{describle},#{downloadPath},#{downloadAmout},
+	#{price})
+</insert>
+<update id="updateDownload" parameterType="Download">
+	update Download
+	<trim prefix="set" suffixOverrides="," suffix="where did=#{did}">
+		<if test="createTime!=null">createTime=#{createTime},</if>
+		<if test="title!=null">title=#{title},</if>
+		<if test="describle!=null">describle=#{describle},</if>
+		<if test="downloadPath!=null">downloadPath=#{downloadPath},</if>
+		<if test="downloadAmout!=null">downloadAmout=#{downloadAmout},</if>
+		<if test="price!=null">price=#{price},</if>
+	</trim>
+</update>
+<delete id="deleteDownload" parameterType="int">
+	delete from Download where did=#{did}
+</delete>
+</mapper>
