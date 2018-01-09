@@ -4,7 +4,7 @@
 
 *.class
 out
-.idea
+
 
 Test.class
 Test.java
