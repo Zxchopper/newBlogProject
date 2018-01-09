@@ -4,8 +4,8 @@
 
 *.class
 out
-
-
+.idea
+wyc
 Test.class
 Test.java
 test*
@@ -17,5 +17,4 @@ jbit.log
 workspace.xml
 
 log.log
-
 
