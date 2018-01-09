@@ -40,5 +40,25 @@ public class UserController {
 
     }
 
+    /**
+     * @author kanxueke
+     *
+     */
+    @RequestMapping(value = "/goRegister", method=RequestMethod.POST)
+    public String goRegister(){
+        return "register";
+    }
+
+    /**
+     * @author kanxueke
+     */
+    @RequestMapping(value = "/doRegister", method=RequestMethod.POST)
+    public String doRegister(User user){
+        int count = userServer.doRegister(user);
+        if(count>0){
+            return"success";
+        }
+        return "fail";
+    }
 
 }
