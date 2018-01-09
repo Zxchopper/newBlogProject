@@ -1,6 +1,6 @@
 package com.bdqn.blog.server;
 
-import com.bdqn.blog.entity.User;
+import com.bdqn.blog.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserServer {
