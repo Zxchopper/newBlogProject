@@ -19,12 +19,13 @@
     <%--第二导航栏--%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/hearder.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/second-nav.css" />
-    <%--博客首页--%>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/blogindex.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/blogIndexImg.css" />
-    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/js/prefixfree.min.js" ></script>
+    <%--bbs首页--%>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/bbs.css" />
 </head>
-<body>
+<body class="easyui-layout">
+<div data-options="region:'west',split:true,title:'论坛导航'" style="width:150px;padding:10px;"></div>
+<div data-options="region:'center'" style="background: lightgoldenrodyellow;">
+    <!--头部-->
     <div id="body">
         <div id="top-navbar">
             <img src="${pageContext.request.contextPath}/statics/themes/black/images/loading.gif" id="logo" />
@@ -43,12 +44,8 @@
                 <!--<img class="top-writeblog-img" src="../themes/black/images/messager_icons.png"/>-->
             </div>
             <a class="top-writeblog-text" href="" >写博客</a>
-
-
-
-
-            <!--用户已登陆-->
             <!--没有用户登陆-->
+            <!--用户已登陆-->
             <c:choose>
                 <c:when test="${sessionScope.user} != null">
                     <div class="top-login" >
