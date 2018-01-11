@@ -1,3 +1,4 @@
+/*博客首页样式*/
 .mainbody{
 	margin-top: 20px;
 }
@@ -22,7 +23,7 @@
 /*文章列表*/
 .blog-list{
 	margin-left: 40px;
-	font-size: 2s0px;
+	font-size: 20px;
 }
 
 .blog-list span:nth-of-type(2){
@@ -43,7 +44,6 @@
 	font-weight: 700;
 	margin-left: 20px;
 }
-
 
 /*列表文本*/
 .blog-list-p{
