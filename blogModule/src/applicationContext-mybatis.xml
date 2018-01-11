@@ -14,6 +14,7 @@
                 
     <context:component-scan base-package="com.bdqn.blog.server"/>
     <context:component-scan base-package="com.bdqn.blog.dao"/>
+
     <context:annotation-config />
    	<context:property-placeholder location="classpath:database.properties"/>
     <!-- JNDI获取数据源(使用dbcp连接池) -->  
