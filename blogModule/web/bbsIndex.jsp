@@ -5,6 +5,7 @@
   Time: 19:19
   To change this template use File | Settings | File Templates.
 --%>
+<%--BBS首页--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/WEB-INF/jsp/common/bbsheader.jsp"%>
 

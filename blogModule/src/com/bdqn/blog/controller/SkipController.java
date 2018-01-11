@@ -29,6 +29,6 @@ public class SkipController {
      */
     @RequestMapping(value = "/tobbs",method = RequestMethod.GET)
     public String toBBs(){
-        return "bbs/bbsIndex";
+        return "redirect:/bbsIndex.jsp";
     }
 }
