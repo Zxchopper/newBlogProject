@@ -45,8 +45,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="getBlogCommentListByUserId" resultMap="BlogComment">
         SELECT u.uid,c.*  FROM user u,blogcomment c
 		<where>
-			<if test="uid!=null and uid!=''">
-				and uid=#{uid} limit #{pageNo},#{pageSize}
+			<if test="u.uid!=null and u.uid!=''">
+				and uid=#{uid} limit #{pageNo},#{pageSize} ORDER BY c.createTime DESC
 			</if>
 		</where>
     </select>
