@@ -1,11 +1,15 @@
 #ignore
 tgwerfgdfhsdhfghfg
+test*
+Test*
 text*
 Text*
 jbit.log
 *.iml
 
+.idea
 workspace.xml
+out
 
 log.log
 
