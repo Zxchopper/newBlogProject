@@ -49,6 +49,10 @@ public class UserController {
         return "register";
     }
 
+    @RequestMapping(value = "/goRegister", method=RequestMethod.POST)
+    public String goLogin(){
+        return "login";
+    }
     /**
      * @author kanxueke
      */
