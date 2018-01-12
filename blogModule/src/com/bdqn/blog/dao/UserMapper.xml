@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT u.uid,c.*  FROM user u,blogcomment c
 		<where>
 			<if test="u.uid!=null and u.uid!=''">
-				and uid=#{uid} limit #{pageNo},#{pageSize} ORDER BY c.createTime DESC
+				and uid=#{uid} ORDER BY c.createTime DESC limit #{pageNo},#{pageSize}
 			</if>
 		</where>
     </select>

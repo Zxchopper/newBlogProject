@@ -6,6 +6,7 @@ import com.bdqn.blog.server.BlogcommentService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class BlogcommentServiceImpl implements BlogcommentService{
@@ -25,5 +26,10 @@ public class BlogcommentServiceImpl implements BlogcommentService{
     @Override
     public int removeBlogcomment(Integer id) {
         return blogCommentMapper.deleteBlogcomment(id);
+    }
+
+    @Override
+    public List<BlogComment> findBlogcommentList(int pageNo, int pageSize) {
+        return blogCommentMapper.getBlogcommentList(pageNo,pageSize);
     }
 }
