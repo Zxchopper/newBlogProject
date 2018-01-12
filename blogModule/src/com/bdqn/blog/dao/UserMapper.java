@@ -11,5 +11,11 @@ public interface UserMapper{
 	int insertUser(User user);
 	int updateUser(User user);
 	int deleteUser(@Param("uid") Integer id);
-	List<BlogComment> getBlogCommentListByUserId(@Param("uid")Integer uid);
+
+	/**
+	 * 通过用户id查询该用户的所有评论
+	 * @param uid
+	 * @return
+	 */
+	List<BlogComment> getBlogCommentListByUserId(@Param("uid")Integer uid,@Param("pageNo") int pageNo,@Param("pageSize")int pageSize);
 }
