@@ -45,8 +45,8 @@
         <c:otherwise>
             <div class="navbar-nologin">
                 <ul class="bbs-left-bar">
-                    <li><a href="">登陆</a></li>
-                    <li><a href="">注册</a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/goLogin">登陆</a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/goRegister">注册</a></li>
                 </ul>
             </div>
         </c:otherwise>

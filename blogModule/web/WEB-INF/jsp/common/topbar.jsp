@@ -46,7 +46,7 @@
             <c:otherwise>
                 <div class="top-nologin" >
                     <a href="/user/login">登陆</a>
-                    <a href="">注册</a>
+                    <a href="${pageContext.request.contextPath}/user/goRegister">注册</a>
                 </div>
             </c:otherwise>
         </c:choose>
