@@ -1,6 +1,8 @@
 package com.bdqn.blog.controller;
 
 import com.bdqn.blog.pojo.Blog;
+import com.bdqn.blog.pojo.BlogGenre;
+import com.bdqn.blog.server.BlogGenreServer;
 import com.bdqn.blog.server.BlogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,8 @@ public class BlogController {
 
     @Resource
     private BlogService blogService;
+    @Resource
+    private BlogGenreServer BlogGenreServer;
     //增加博客
     @RequestMapping(value = "/add" ,method = RequestMethod.POST)
     public String addBolg(@RequestParam String title,@RequestParam String contentPath){
@@ -68,9 +72,10 @@ public class BlogController {
     public String selectBlog(Model Model , @RequestParam(value = "pageNo" ,required = false) int pageNo,
                              @RequestParam(value = "uid" ,required = false)   int uid,
                              @RequestParam(value = "title" ,required = false)    String title){
-
-       List<Blog> blogs= blogService.selectAllBlog(uid,title,pageNo,3);
+        List<BlogGenre> BlogGenres=BlogGenreServer.getBlogGenreAll();
+        List<Blog> blogs= blogService.selectAllBlog(uid,title,pageNo,3);
         Model.addAttribute("blogs",blogs);
+        Model.addAttribute("BlogGenres",BlogGenres);
         return  "blogWelcome";
     }
 
