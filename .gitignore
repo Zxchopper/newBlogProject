@@ -1,15 +1,5 @@
 #ignore
-.metadata
-.myeclipse
-
-*.class
-out
-.idea
-
-Test11
-wycaaaaaaaaaaaaaaaaaaaas
-Test.class
-Test.java
+tgwerfgdfhsdhfghfg
 test*
 Test*
 text*
@@ -17,7 +7,9 @@ Text*
 jbit.log
 *.iml
 
+.idea
 workspace.xml
+out
 
 log.log
 

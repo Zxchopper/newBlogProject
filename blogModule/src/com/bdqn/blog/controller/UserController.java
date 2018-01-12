@@ -2,8 +2,9 @@ package com.bdqn.blog.controller;
 
 
 import com.bdqn.blog.pojo.User;
-import com.bdqn.blog.server.UserServer;
+import com.bdqn.blog.server.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +21,7 @@ import javax.annotation.Resource;
 @RequestMapping(value="/user")
 public class UserController {
     @Resource
-    private UserServer userServer;
+    private UserService userServer;
 
     @RequestMapping(value="/loginCheck",method= RequestMethod.POST)
     public String loginCheck(@RequestParam String name,@RequestParam String pwd){
@@ -49,14 +50,19 @@ public class UserController {
         return "register";
     }
 
+    @RequestMapping(value = "/goLogin", method=RequestMethod.POST)
+    public String goLogin(){
+        return "login";
+    }
     /**
      * @author kanxueke
      */
     @RequestMapping(value = "/doRegister", method=RequestMethod.POST)
-    public String doRegister(User user){
+    public String doRegister(User user,Model model){
         int count = userServer.doRegister(user);
         if(count>0){
-            return"success";
+            model.addAttribute("user",user);
+            return"login";
         }
         return "fail";
     }

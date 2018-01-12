@@ -1,3 +1,11 @@
+/*bbs左侧栏*/
+.bbs-left-bar{
+	padding: 0;
+}
+.bbs-left-bar li{
+	list-style: none;
+}
+
 /*论坛首页样式*/
 .bbs-main{
 	width: 50%;
