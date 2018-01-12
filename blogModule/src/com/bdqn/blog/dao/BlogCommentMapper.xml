@@ -18,5 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <delete id="deleteBlogcomment" parameterType="Integer">
         DELETE FROM blogcomment WHERE id=#{id}
     </delete>
+    <select id="getBlogcommentList" resultType="Blogcomment">
+        SELECT c.createTime,c.content,c.floor FROM blogcomment c ORDER BY c.createTime DESC limit #{pageNo},#{pageSize}
+    </select>
 
 </mapper>

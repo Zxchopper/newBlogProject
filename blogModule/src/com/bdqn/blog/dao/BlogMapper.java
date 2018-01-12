@@ -22,6 +22,6 @@ public interface BlogMapper{
 	 * @param bid
 	 * @return
 	 */
-	List<BlogComment> getBlogCommentListByBlogId(@Param("bid") Integer bid);
+	List<BlogComment> getBlogCommentListByBlogId(@Param("bid") Integer bid,@Param("pageNo") int pageNo,@Param("pageSize")int pageSize);
 
 }

@@ -1,0 +1,18 @@
+运行过程会覆盖当前数据库
+
+blog_noKey.sql
+	测试数据
+
+blog_tables_noKey_update.sql
+	新增插入正常数据的表单有
+		blog博客、forum论坛、download下载
+
+
+
+download下载表
+	skillTypeId改为skillId，对应SkillType表主键id
+forum论坛表
+	id改为genreId
+新增collected收藏表
+
+

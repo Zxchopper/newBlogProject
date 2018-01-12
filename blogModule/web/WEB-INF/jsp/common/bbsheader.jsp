@@ -24,7 +24,34 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/bbs.css" />
 </head>
 <body class="easyui-layout">
-<div data-options="region:'west',split:true,title:'论坛导航'" style="width:150px;padding:10px;"></div>
+<div data-options="region:'west',split:true,title:'论坛导航'" style="width:150px;padding:10px;">
+    <%--论坛导航--%>
+    <c:choose>
+        <c:when test="sessionScope.user != null">
+            <%--用户登陆--%>
+            <div class="navbar-login">
+                <div class="top-login-img">
+                    <img src="${pageContext.request.contextPath}/statics/img/8a9c025fdb6026d6ac14b43fe7f6306a504e20f7.jpg" />
+                </div>
+                <div>
+                    <span>用户名</span>|<a href="">退出</a>
+                </div>
+                <ul class="bbs-left-bar">
+                    <li><a href="">我要发帖</a></li>
+                    <li><a href="">我的帖子</a></li>
+                </ul>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <div class="navbar-nologin">
+                <ul class="bbs-left-bar">
+                    <li><a href="">登陆</a></li>
+                    <li><a href="">注册</a></li>
+                </ul>
+            </div>
+        </c:otherwise>
+    </c:choose>
+</div>
 <div data-options="region:'center'" style="background: lightgoldenrodyellow;">
     <!--顶部导航-->
    <%@include file="/WEB-INF/jsp/common/topbar.jsp"%>
