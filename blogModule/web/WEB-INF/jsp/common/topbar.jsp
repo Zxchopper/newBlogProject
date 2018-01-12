@@ -45,7 +45,7 @@
             </c:when>
             <c:otherwise>
                 <div class="top-nologin" >
-                    <a href="">登陆</a>
+                    <a href="/user/login">登陆</a>
                     <a href="">注册</a>
                 </div>
             </c:otherwise>
