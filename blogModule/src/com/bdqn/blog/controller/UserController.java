@@ -4,6 +4,7 @@ package com.bdqn.blog.controller;
 import com.bdqn.blog.pojo.User;
 import com.bdqn.blog.server.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,7 +50,7 @@ public class UserController {
         return "register";
     }
 
-    @RequestMapping(value = "/goRegister", method=RequestMethod.POST)
+    @RequestMapping(value = "/goLogin", method=RequestMethod.POST)
     public String goLogin(){
         return "login";
     }
@@ -57,10 +58,11 @@ public class UserController {
      * @author kanxueke
      */
     @RequestMapping(value = "/doRegister", method=RequestMethod.POST)
-    public String doRegister(User user){
+    public String doRegister(User user,Model model){
         int count = userServer.doRegister(user);
         if(count>0){
-            return"success";
+            model.addAttribute("user",user);
+            return"login";
         }
         return "fail";
     }
