@@ -25,7 +25,7 @@
 <body>
 <div id="login">
     <h3>帐号登录</h3>
-    <form action="" method="post">
+    <form action="loginCheck" method="post">
         <input type="hidden" id="gps" name="gps" value=""/>
         <p><input id="userName" name="userName" tabindex="1" placeholder="输入用户名" class="user_name" type="text"
                   value=""/></p>
@@ -33,7 +33,7 @@
                   type="password" value="" autocomplete="off"/></p>
 
         <p><input id="button" tabindex="3" class="user_password"
-                  type="button" value="登录" onclick="javascript:login();"/></p>
+                  type="submit" value="登录" onclick="javascript:login();"/></p>
     </form>
 </div>
 </body>
