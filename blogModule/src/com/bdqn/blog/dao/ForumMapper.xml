@@ -3,21 +3,51 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bdqn.blog.dao.ForumMapper">
-<insert id="insertForum" parameterType="Forum">
-	insert into Forum
-	(fid,createTime,content,readAmout,rewardIntegral)
-	values(#{fid},#{createTime},#{content},#{readAmout},#{rewardIntegral})
-</insert>
-<update id="updateForum" parameterType="Forum">
-	update Forum
-	<trim prefix="set" suffixOverrides="," suffix="where fid=#{fid}">
-		<if test="createTime!=null">createTime=#{createTime},</if>
-		<if test="content!=null">content=#{content},</if>
-		<if test="readAmout!=null">readAmout=#{readAmout},</if>
-		<if test="rewardIntegral!=null">rewardIntegral=#{rewardIntegral},</if>
-	</trim>
-</update>
-<delete id="deleteForum" parameterType="int">
-	delete from Forum where fid=#{fid}
-</delete>
+	<!--添加-->
+	<insert id="insertForum" parameterType="Forum">
+		insert into forum
+		(uid,fid,createTime,content,readAmout,rewardIntegral)
+		values(#{uid},#{fid},#{createTime},#{content},#{readAmout},#{rewardIntegral})
+	</insert>
+	<!--修改-->
+	<update id="updateForum" parameterType="Forum">
+		update forum
+		<trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+			<if test="createTime!=null">createTime=#{createTime},</if>
+			<if test="content!=null">content=#{content},</if>
+			<if test="readAmout!=null">readAmout=#{readAmout},</if>
+			<if test="rewardIntegral!=null">rewardIntegral=#{rewardIntegral},</if>
+		</trim>
+	</update>
+	<!--删除-->
+	<delete id="deleteForum" parameterType="int">
+		delete from forum where id=#{id}
+	</delete>
+	<!--分页-->
+	<resultMap id="forumList" type="Forum">
+		<id property="id" column="id"/>
+		<result property="createTime" column="createTime"/>
+		<result property="content" column="content"/>
+		<association property="user" resultMap="userName"/>
+		<association property="forumgenre" resultMap="forumgenreName"/>
+	</resultMap>
+	<resultMap id="userName" type="User">
+		<id property="id" column="u_id"/>
+		<result property="userName" column="userName"/>
+	</resultMap>
+	<resultMap id="forumgenreName" type="Forumgenre">
+		<id property="id" column="fg_id"/>
+		<result property="genreName" column="genreName"/>
+	</resultMap>
+
+
+	<select id="pageFind" resultMap="forumList">
+		SELECT f.*,fg.*,fg.id as fg_id,u.*,u.id AS u_id FROM (SELECT * FROM(SELECT * FROM forum ORDER BY createTime DESC) AS f1 limit #{pageNo},#{pageSize}) as f,
+			 forumgenre as fg,user as u WHERE f.fid=fg.id and f.uid=u.id
+	</select>
+
+	<select id="show" resultMap="forumList">
+		SELECT f.*,fg.*,fg.id as fg_id,u.*,u.id AS u_id FROM forum AS f,forumgenre as fg,user as u
+		WHERE id=#{id} and f.uid=u.id and f.fid=fg.id
+	</select>
 </mapper>
