@@ -43,7 +43,7 @@ limit #{pageNo},#{pageSize}
 		SELECT b.bid,c.*  FROM blog b,blogcomment c
 		<where>
 			<if test="bid!=null and bid!=''">
-				and bid=#{bid} limit #{pageNo},#{pageSize} ORDER BY c.createTime DESC
+				and bid=#{bid} ORDER BY c.createTime DESC limit #{pageNo},#{pageSize}
 			</if>
 		</where>
 	</select>
