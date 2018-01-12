@@ -1,0 +1,112 @@
+/*头部样式*/
+body{
+	margin: 0;
+}
+
+#body{
+	width: 100%;
+	
+}
+#top-navbar{
+	width:100%;
+	height: 75px;
+	margin:auto;
+	
+	position: relative;
+}
+
+#top-navbar #logo{
+	position: absolute;
+	top: 35%;
+	left: 10px;
+}
+
+.top-ul{
+	float: left;
+	width: 30%;
+	margin: 0;
+	height: 75px;
+	line-height: 75px;
+	display:flex;
+	
+	
+}
+
+.top-ul li{
+	height: 70px;
+	width: 15%;
+	text-align: center;
+	list-style: none;
+	border-radius: 25% 25%;
+}
+
+.top-ul li:hover{
+	box-shadow: 0px 5px 1px gray;
+}
+
+.top-ul li a{
+	color: gray;
+	dominant-baseline: no-change;
+	text-decoration: none;
+}
+.top-searchbox{
+	float: left;
+}
+
+.top-search{
+	margin-top: 25px;
+	height: 30px;
+	text-indent: 1em;
+	border-radius: 10px;
+}
+
+.top-writeblog{
+	margin-left: 10%;
+	margin-top: 25px;
+	float: left;
+	width: 32px;
+	height: 32px;
+	background: url(../themes/black/images/messager_icons.png);
+}
+
+.top-writeblog-text{
+	text-decoration: none;
+	line-height: 75px;
+	font-family: "黑体";
+	font-size: x-large;
+}
+
+.top-nologin{
+	float:right;
+	margin-right: 10%;
+	margin-top: 25px;
+}
+
+.top-nologin a{
+	margin-right: 10px;
+	text-decoration: none;
+}
+
+.top-login{
+	float: right;
+	margin-right: 10%;
+	margin-top: 10px;
+}
+
+.top-login-img{
+	border-radius: 50%;
+	overflow: hidden;
+	width: 50px;
+	height: 50px;
+}
+
+.top-login div{
+	float: left;
+}
+.top-login div:nth-of-type(2){
+	margin-left: 10px;
+	margin-top: 15px;
+}
+
+
+

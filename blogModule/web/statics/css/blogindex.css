@@ -1,0 +1,118 @@
+/*博客首页样式*/
+.mainbody{
+	margin-top: 20px;
+}
+
+.mainbody-left{
+	float: left;
+	width: 50%;	
+}
+
+.mainbogy-right{
+	width: 40%;
+	margin-right: 5%;
+	float:right;
+	border: 1px solid black;
+}
+
+.mainbody-left ul li{
+	padding-right: 30px;
+	list-style: none;
+}
+
+/*文章列表*/
+.blog-list{
+	margin-left: 40px;
+	font-size: 20px;
+}
+
+.blog-list span:nth-of-type(2){
+	float: right;
+}
+
+/*列表div*/
+.blog-list-div{
+	border-bottom: dashed   1px gray;
+}
+.blog-list-div:hover{
+	box-shadow: 0px 5px 1px gray;
+}
+
+/*列表标题*/
+.blog-list-title{
+	font-size: 30px;
+	font-weight: 700;
+	margin-left: 20px;
+}
+
+/*列表文本*/
+.blog-list-p{
+	font-size: 16px;
+	text-indent: 2em;
+}
+
+.blog-list-p span:nth-of-type(1){
+	color: lightseagreen;
+}
+.blog-list-p span:nth-of-type(2){
+	color: gray;
+}
+.blog-list-p span{
+	
+}
+/*博客列表分页*/
+.blog-list-page {
+	display: flex;
+}
+.blog-list-page>li{
+	text-align: center;
+}
+
+.blog-list-page>li:hover{
+	box-shadow: 1px 1px 1px gray;
+}
+.blog-list-page>li a{
+	text-align: center;
+	text-decoration: none;
+}
+
+/*主体右侧*/
+.mainbogy-right{border: none;}
+
+/*主体右侧下部分，最新评论去*/
+.mainbody-right-botton{
+	
+}
+.mainbody-right-botton-title{overflow: hidden;}
+.mainbody-right-botton-title p:nth-of-type(1){
+	float: left;
+}
+.mainbody-right-botton-title p:nth-of-type(2){
+	float: right;
+}
+
+.mainbody-right-botton ul{
+	margin: 0;
+	padding: 0;
+}
+.mainbody-right-botton ul li{
+	list-style: none;
+	display: flex;
+	border: 1px solid gray;
+}
+
+.mainbody-right-botton-liDiv{
+	padding: 10px;	
+}
+
+.mainbody-right-botton-liDiv img{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: yellow;
+}
+
+.mainbody-right-botton ul li p{
+	text-indent: 2em;
+	font-size: 16px;
+}
