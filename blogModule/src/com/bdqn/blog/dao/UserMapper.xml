@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bdqn.blog.dao.UserMapper">
-    <insert id="insertUser" parameterType="User">
-            insert into User
-            (uid,userName,userPassword,nickName,name,sex,
-            email,status,money,integral,describe
-            )
-            values(#{uid},#{userName},#{userPassword},#{nickName},#{name},#{sex},
-            #{email},#{status},#{money},#{integral},#{describe}
-            )
-    </insert>
-    <update id="updateUser" parameterType="User">
-        update User
-        <trim prefix="set" suffixOverrides="," suffix="where uid=#{uid}">
-            <if test="userName!=null">userName=#{userName},</if>
-            <if test="userPassword!=null">userPassword=#{userPassword},</if>
-            <if test="nickName!=null">nickName=#{nickName},</if>
-            <if test="name!=null">name=#{name},</if>
-            <if test="sex!=null">sex=#{sex},</if>
-            <if test="email!=null">email=#{email},</if>
-            <if test="status!=null">status=#{status},</if>
-            <if test="money!=null">money=#{money},</if>
-            <if test="integral!=null">integral=#{integral},</if>
-            <if test="describe!=null">describe=#{describe},</if>
-        </trim>
-    </update>
-    <delete id="deleteUser" parameterType="int">
+<insert id="insertUser" parameterType="User">
+	insert into user
+	(uid,userName,userPassword,nickName,name,sex,
+	email,status,money,integral,`describe`
+	)
+	values(#{uid},#{userName},#{userPassword},#{nickName},#{name},#{sex},
+	#{email},#{status},#{money},#{integral},#{describe}
+	)
+</insert>
+<update id="updateUser" parameterType="User">
+	update User
+	<trim prefix="set" suffixOverrides="," suffix="where uid=#{uid}">
+		<if test="userName!=null">userName=#{userName},</if>
+		<if test="userPassword!=null">userPassword=#{userPassword},</if>
+		<if test="nickName!=null">nickName=#{nickName},</if>
+		<if test="name!=null">name=#{name},</if>
+		<if test="sex!=null">sex=#{sex},</if>
+		<if test="email!=null">email=#{email},</if>
+		<if test="status!=null">status=#{status},</if>
+		<if test="money!=null">money=#{money},</if>
+		<if test="integral!=null">integral=#{integral},</if>
+		<if test="describe!=null">describe=#{describe},</if>
+	</trim>
+</update>
+<delete id="deleteUser" parameterType="int">
 	delete from User where uid=#{uid}
 </delete>
 
@@ -41,7 +41,12 @@
             <result property="floor" column="floor"></result>
         </collection>
     </resultMap>
+
     <select id="getBlogCommentListByUserId" resultMap="BlogComment">
         SELECT u.uid,c.*  FROM user u,blogcomment c where uid=#{uid}
+    </select>
+
+    <select id="getLoginUser" resultType="User">
+        select * from user where userName=#{name} and userPassword=#{pwd}
     </select>
 </mapper>

@@ -1,0 +1,23 @@
+/*第导航栏样式*/
+.top-second-navbar{
+	background: lightgrey;
+}
+.top-second-ul{
+	margin: 0;
+	display: flex;
+}
+.top-second-ul li{
+	line-height: 30px;
+	height: 30px;
+	width: 5%;
+	text-align: center;
+	list-style: none;
+}
+
+.top-second-ul li a{
+	text-decoration: none;
+}
+
+.top-second-ul li a:hover{
+	color: gray;
+}

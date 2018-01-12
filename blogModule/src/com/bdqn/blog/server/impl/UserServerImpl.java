@@ -14,13 +14,20 @@ import javax.annotation.Resource;
  Date: 2018/1/7
  Time: 11:22
  */
-@Service
+@Service("service")
 public class UserServerImpl  implements UserServer{
     @Resource
-   private UserMapper userMapperser;
+   private UserMapper userMapper;
     @Override
     public User getLoginUser(String name, String pwd) throws Exception {
        /* return userMapperser.getLoginUser(name,pwd);*/
-       return null;
+
+       return userMapper.getLoginUser(name,pwd);
+    }
+
+    @Override
+    public int doRegister(User user) {
+
+        return userMapper.insertUser(user);
     }
 }

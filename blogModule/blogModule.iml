@@ -19,12 +19,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="lib1" level="project" />
-    <orderEntry type="library" name="commons-lang-2.5" level="project" />
-    <orderEntry type="library" name="ssm" level="project" />
+    <orderEntry type="library" exported="" name="commons-lang-2.5" level="project" />
+    <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="module-library">
-      <library name="ssm">
+      <library name="aopalliance-1.0">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/aopalliance-1.0.jar!/" />
           <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/aspectjweaver-1.6.9.jar!/" />
@@ -57,5 +55,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="json-20160810" level="project" />
   </component>
 </module>
