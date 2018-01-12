@@ -33,5 +33,5 @@ public class ForumServiceImpl implements ForumService{
     }
 
     @Override
-    public Forum show(Integer id){return forumMapper.show(id) }
+    public Forum show(Integer id){return forumMapper.show(id); }
 }

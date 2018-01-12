@@ -24,6 +24,6 @@ public interface ForumMapper{
 	//分页
 	List<Forum> pageFind(@Param("pageNo") Integer pageNo, @Param("pageSize") Integer pageSize);
 	//显示论坛内容
-	Forum show(@Param Integer id);
+	Forum show(@Param("id") Integer id);
 
 }

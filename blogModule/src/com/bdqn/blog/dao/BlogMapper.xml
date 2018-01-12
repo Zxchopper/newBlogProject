@@ -20,6 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <delete id="deleteBlog" parameterType="int" >
 	delete from Blog where bid=#{bid}
 </delete>
+
+
 	<select id="selectAllBlog" resultType="Blog">
 select * from blog where 1=1
 <if test="uid != null"> AND uid=#{uid}</if>
@@ -27,4 +29,22 @@ select * from blog where 1=1
 limit #{pageNo},#{pageSize}
 
 </select>
+
+	<resultMap id="Blogcomment" type="Blog">
+		<id property="bid" column="bid"></id>
+		<collection property="blogCommentList" ofType="BlogComment">
+			<id property="id" column="id"></id>
+			<result property="createTime" column="createTime"></result>
+			<result property="content" column="content"></result>
+			<result property="floor" column="floor"></result>
+		</collection>
+	</resultMap>
+	<select id="getBlogCommentListByBlogId" resultMap="Blogcomment">
+		SELECT b.bid,c.*  FROM blog b,blogcomment c
+		<where>
+			<if test="bid!=null and bid!=''">
+				and bid=#{bid} limit #{pageNo},#{pageSize}
+			</if>
+		</where>
+	</select>
 </mapper>
