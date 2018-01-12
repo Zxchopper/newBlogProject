@@ -7,6 +7,7 @@ Text*
 jbit.log
 *.iml
 
+.idea
 workspace.xml
 out
 
