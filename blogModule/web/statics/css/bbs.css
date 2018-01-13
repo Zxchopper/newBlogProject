@@ -6,7 +6,7 @@
 	list-style: none;
 }
 
-/*论坛首页样式*/
+/*主内容模块样式*/
 .bbs-main{
 	width: 50%;
 	margin: auto;
@@ -86,3 +86,85 @@
 	margin-right: 30px;
 	color: blue;
 }
+
+/*具体贴纸页面样式*/
+.bbs-view{
+	margin: 10px auto;
+	width: 80%;
+	position: relative;
+
+}
+.bbs-view-function{
+	position:fixed;
+	left: 150px;
+	
+}
+.bbs-view-function ul li{
+	list-style: none;
+}
+.bbs-view-function ul li a{
+	text-decoration: none;
+}
+
+.bbs-view-post{
+	margin: 10px;
+	border: 1px solid lightblue;
+	display: flex;	
+	position:relative;
+}
+
+.floor{
+	position: absolute;
+	top:10px;
+	left: 10px;
+}
+
+.bbs-view-post-left{
+	width: 20%;
+	display: inline-block;
+	background: lightblue;
+	position:relative;
+}
+
+.bbs-view-post-left-userInfo{
+	text-align: center;
+	width: 100px;
+	margin:10px auto;
+}
+
+.bbs-view-post-left-userInfo img{
+	width: 100px;
+	height: 100px;
+}
+.bbs-view-post-text-info{
+	margin: 10px;
+	width: 100%;
+}
+.bbs-view-Replieses ul{
+	margin: 10px;
+	padding: 0;
+}
+.bbs-view-Replieses ul li{
+	list-style: none;
+	margin-top: 1px;
+	border: 1px solid lightblue;
+}
+
+.bbs-view-Replies{
+	display: flex;
+}
+
+/*论坛分类区公共列表样式*/
+.pagination{
+	display: flex;
+}
+
+.pagination ul{
+	display: flex;
+}
+.pagination ul li{
+	margin-left: 20px;
+	list-style: none;
+}
+
+
