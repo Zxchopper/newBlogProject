@@ -45,12 +45,12 @@ public class UserController {
      * @author kanxueke
      *
      */
-    @RequestMapping(value = "/goRegister", method=RequestMethod.POST)
+    @RequestMapping(value = "/goRegister", method=RequestMethod.GET)
     public String goRegister(){
         return "register";
     }
 
-    @RequestMapping(value = "/goLogin", method=RequestMethod.POST)
+    @RequestMapping(value = "/goLogin", method=RequestMethod.GET)
     public String goLogin(){
         return "login";
     }
