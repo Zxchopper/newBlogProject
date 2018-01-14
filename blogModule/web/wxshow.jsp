@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </form>
        </div>
 
-
+<!--下面是微信分享等-->
   <script type="text/javascript">
       var jiathis_config = {
           url: "http://www.baidu.com",

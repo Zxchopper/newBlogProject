@@ -2,6 +2,7 @@ package com.bdqn.blog.server;
 
 import com.bdqn.blog.pojo.Blog;
 import com.bdqn.blog.pojo.BlogComment;
+import org.apache.ibatis.annotations.Param;
 
 
 import java.util.List;
@@ -19,5 +20,10 @@ public interface BlogService{
 	List<Blog> selectAllBlog( int uid, String title, int pageNo, int pageSize);
 
 	public List<BlogComment> selectAllBlogcomment(int bid,int pageNo,int pageSize);
+
+	public int totalCount(int uid, String title);
+
+
+	Blog selectByBid( int Bid);
 
 }

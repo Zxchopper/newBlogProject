@@ -21,6 +21,8 @@ public class BlogServerImpl implements BlogService {
     @Resource
     private BlogMapper blogMapper;
 
+
+
     //增加博客
     @Override
     public int addBlog(Blog blog) {
@@ -51,6 +53,17 @@ public class BlogServerImpl implements BlogService {
      */
     @Override
     public List<BlogComment> selectAllBlogcomment(int bid, int pageNo, int pageSize) {
+
         return blogMapper.getBlogCommentListByBlogId(bid,pageNo,pageSize);
+    }
+
+    @Override
+    public int totalCount(int uid, String title) {
+        return blogMapper.totalCount( uid,  title);
+    }
+
+    @Override
+    public Blog selectByBid(int bid) {
+        return blogMapper.selectByBid(bid);
     }
 }

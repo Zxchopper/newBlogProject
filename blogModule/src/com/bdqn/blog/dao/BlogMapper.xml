@@ -35,8 +35,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAllBlog" resultType="Blog">
 select * from blog where 1=1
 <if test="uid != null"> AND uid=#{uid}</if>
-<if test="title != null">AND title=#{title}</if>
+<if test="title != null">AND title like #{title}</if>
 limit #{pageNo},#{pageSize}
 
 </select>
+    <select id="totalCount" resultType="int">
+        select count(1) from blog where 1=1
+        <if test="uid != null"> AND uid=#{uid}</if>
+        <if test="title != null">AND title like #{title}</if>
+    </select>
+    <select id="selectByBid" resultType="Blog">
+
+        select * from blog where id=#{bid}
+
+
+    </select>
+    <delete id="deleteBlog" >
+        delete from blog where id =#{bid}
+
+
+    </delete>
 </mapper>

@@ -18,10 +18,22 @@ public interface BlogMapper{
 	List<Blog> selectAllBlog(@Param("uid") int uid,@Param("title") String title,@Param("pageNo") int pageNo,@Param("pageSize")int pageSize);
 
 	/**
+	 * 总页数
+
+	 */
+	int totalCount(@Param("uid") int uid,@Param("title") String title);
+	/**
 	 * 通过Blog的bid查找所有在此博客下评论的评论集合
 	 * @param bid
 	 * @return
 	 */
 	List<BlogComment> getBlogCommentListByBlogId(@Param("bid") Integer bid,@Param("pageNo") int pageNo,@Param("pageSize")int pageSize);
+
+	/**
+	 * 通过ad查找blog是否存在
+	 * @param  bid
+	 * @return Blog
+	 */
+	Blog selectByBid(@Param("bid") int Bid);
 
 }
