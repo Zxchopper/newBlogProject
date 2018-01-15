@@ -37,7 +37,7 @@
 
 <section id="fr1">
     <h1 class="hr_1">新用户注册</h1>
-    <form action="" method="post">
+    <form action="doRegister" method="post">
 
         <dl>
             <dt><label for="email">邮箱</label></dt>

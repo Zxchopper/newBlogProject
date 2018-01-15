@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 /**
  *Created by IntelliJ IDEA.
@@ -23,12 +24,12 @@ public class UserController {
     @Resource
     private UserService userServer;
 
-    @RequestMapping(value="/loginCheck",method= RequestMethod.GET)
-    public String loginCheck(@RequestParam String name,@RequestParam String pwd){
+    @RequestMapping(value="/loginCheck",method= RequestMethod.POST)
+    public String loginCheck(@RequestParam String name, @RequestParam String pwd, HttpSession session){
         User user  = null;
         try {
             user = userServer.getLoginUser(name,pwd);
-
+            session.setAttribute("user",user);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,7 +37,7 @@ public class UserController {
             return "list.jsp";
         }*/
 
-        return "redirect:/blogWelcome";
+        return "redirect:/blogIndex.jsp";
 
 
     }
@@ -57,7 +58,7 @@ public class UserController {
     /**
      * @author kanxueke
      */
-    @RequestMapping(value = "/doRegister", method=RequestMethod.GET)
+    @RequestMapping(value = "/doRegister", method=RequestMethod.POST)
     public String doRegister(User user,Model model){
         int count = userServer.doRegister(user);
         if(count>0){
