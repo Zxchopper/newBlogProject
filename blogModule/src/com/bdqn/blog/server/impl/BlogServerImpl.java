@@ -21,6 +21,8 @@ public class BlogServerImpl implements BlogService {
     @Resource
     private BlogMapper blogMapper;
 
+
+
     //增加博客
     @Override
     public int addBlog(Blog blog) {
@@ -38,7 +40,8 @@ public class BlogServerImpl implements BlogService {
     }
     //根据条件查询博客   其中包括用户的id，title     return    查询后的分页
     @Override
-    public List<Blog> selectAllBlog(int uid, String title, int pageNo, int pageSize) {
+    public List<Blog> selectAllBlog(Integer uid, String title, int pageNo, int pageSize) {
+        System.out.println("AAAAAAAAA");
         return blogMapper.selectAllBlog(uid,title,pageNo,pageSize);
     }
 
@@ -50,7 +53,19 @@ public class BlogServerImpl implements BlogService {
      * @return
      */
     @Override
-    public List<BlogComment> selectAllBlogcomment(int bid, int pageNo, int pageSize) {
+    public List<BlogComment> selectAllBlogcomment(Integer bid, int pageNo, int pageSize) {
+
         return blogMapper.getBlogCommentListByBlogId(bid,pageNo,pageSize);
+    }
+
+    @Override
+    public int totalCount(Integer uid, String title) {
+
+        return blogMapper.totalCount( uid,  title);
+    }
+
+    @Override
+    public Blog selectByBid(Integer bid) {
+        return blogMapper.selectByBid(bid);
     }
 }

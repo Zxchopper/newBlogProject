@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from replyforum where id=#{id}
 	</delete>
 	<!--查询所有回复-->
-	<resultMap id="replyforumList" type="Replyforum">
+	<resultMap id="replyforumfList" type="Replyforum">
 		<id property="id" column="id"/>
 		<result property="fid" column="uid"/>
 		<result property="createTime" column="createTime"/>

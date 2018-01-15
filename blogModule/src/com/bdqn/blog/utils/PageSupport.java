@@ -13,7 +13,7 @@ public class PageSupport {
     private int totalCount = 0;
 
     //页面容量
-    private int pageSize = 0;
+    private int pageSize = 5;
 
     //总页数-totalCount/pageSize（+1）
     private int totalPageCount = 1;
