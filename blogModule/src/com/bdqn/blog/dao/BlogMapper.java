@@ -15,13 +15,13 @@ public interface BlogMapper{
 	//删除博客
 	int deleteBlog(@Param("bid") Integer id);
 	//根据条件查询博客
-	List<Blog> selectAllBlog(@Param("uid") int uid,@Param("title") String title,@Param("pageNo") int pageNo,@Param("pageSize")int pageSize);
+	List<Blog> selectAllBlog(@Param("uid") Integer uid,@Param("title") String title,@Param("pageNo") int pageNo,@Param("pageSize")int pageSize);
 
 	/**
 	 * 总页数
 
 	 */
-	int totalCount(@Param("uid") int uid,@Param("title") String title);
+	int totalCount(@Param("uid") Integer uid,@Param("title") String title);
 	/**
 	 * 通过Blog的bid查找所有在此博客下评论的评论集合
 	 * @param bid

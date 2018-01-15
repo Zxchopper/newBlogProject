@@ -5,6 +5,7 @@ import com.bdqn.blog.pojo.BlogGenre;
 import com.bdqn.blog.server.BlogGenreServer;
 import com.bdqn.blog.server.BlogService;
 import com.bdqn.blog.utils.PageSupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,9 +28,14 @@ import java.util.List;
 public class BlogController {
 
     @Resource
+    @Autowired
     private BlogService blogService;
+
     @Resource
-    private BlogGenreServer BlogGenreServer;
+    @Autowired
+    private BlogGenreServer blogGenreServer;
+
+
     private PageSupport pageSupport=new PageSupport();
     //增加博客
     @RequestMapping(value = "/add" ,method = RequestMethod.POST)
@@ -81,13 +87,14 @@ public class BlogController {
 
     @RequestMapping("/selectBlog")
     public String selectBlog(Model Model , @RequestParam(value = "pageNo" ,required = false) Integer pageNo,
-                             @RequestParam(value = "uid" ,required = false)   int uid,
+                             @RequestParam(value = "uid" ,required = false)   Integer uid,
                              @RequestParam(value = "title" ,required = false)    String title){
-        List<BlogGenre> BlogGenres=BlogGenreServer.getBlogGenreAll();
+        List<BlogGenre> BlogGenres=blogGenreServer.getBlogGenreAll();
 
         if(pageNo!=null){
             pageSupport.setCurrentPageNo(pageNo);
         }
+        System.out.println("uid"+uid+",title"+title+"pageNo"+(pageSupport.getCurrentPageNo()-1)+"pageSize"+pageSupport.getPageSize());
         List<Blog> blogs= blogService.selectAllBlog(uid,title,pageSupport.getCurrentPageNo()-1,pageSupport.getPageSize());
 
         pageSupport.setTotalCount(blogService.totalCount(uid,title) );
@@ -97,7 +104,7 @@ public class BlogController {
         Model.addAttribute("pages",pageSupport);
         Model.addAttribute("blogs",blogs);
         Model.addAttribute("BlogGenres",BlogGenres);
-        return  "blogWelcome";
+        return  "test";
     }
 
 
