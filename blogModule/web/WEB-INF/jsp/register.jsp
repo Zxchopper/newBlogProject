@@ -62,7 +62,7 @@
         <dl>
             <dt><label for="name">显示名称</label></dt>
             <dd><input id="name" name="name" tabindex="4" placeholder="即昵称，不少于2个字符" class=""
-                       type="password" value="" autocomplete="off" required/></dd>
+                       type="text" value="" autocomplete="off" required/></dd>
         </dl>
 
         <dl>
