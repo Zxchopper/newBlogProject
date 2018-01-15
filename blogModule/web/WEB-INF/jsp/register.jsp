@@ -3,17 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册</title>
-    <link rel="stylesheet" href="statics/css/register.css" type="text/css"/>
-    <script type="text/javascript" src="statics/js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript">
+    <link rel="stylesheet" href="/statics/css/register.css" type="text/css"/>
+    <script type="text/javascript" src="../../statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function () {
+            $(".btn").click(function () {
+                var flag=false;
+                var u=document.getElementById("userName");
+                if(u.validity.patternMismatch){
+                    u.setCustomValidity("以字母开头的4~16位");
+                }else {u.setCustomValidity("");}
 
+                var pwd=document.getElementById("userPassword");
+                if(pwd.validity.patternMismatch){
+                    pwd.setCustomValidity("密码长度为6~20个字符");
+                }else {pwd.setCustomValidity("");}
 
+                var $pwd=$("#userPassword").val();
+                var $repwd=$("#ConfirmPassword").val();
+                if($pwd!=$repwd){
+                    $("#ConfirmPassword").next().html("两次密码不一致").css("color","red");
+                }else {
+                    $("#ConfirmPassword").next().html("");
+                    flag=true;
+                }
 
+                return flag;
+            })
+        })
     </script>
 </head>
 <body>
 
-<section id="register">
+<section id="fr1">
     <h1 class="hr_1">新用户注册</h1>
     <form action="" method="post">
 
@@ -40,13 +62,14 @@
         <dl>
             <dt><label for="name">显示名称</label></dt>
             <dd><input id="name" name="name" tabindex="4" placeholder="即昵称，不少于2个字符" class=""
-                       type="password" value="" autocomplete="off" required/></dd>
+                       type="text" value="" autocomplete="off" required/></dd>
         </dl>
 
         <dl>
             <dt>&nbsp;</dt>
-            <dd><input name="" type="image" src="statics/img/register.jpg" class="btn" /></dd>
+            <dd><input name="" type="image" src="/statics/img/register.jpg" class="btn" /></dd>
         </dl>
+
     </form>
 </section>
 

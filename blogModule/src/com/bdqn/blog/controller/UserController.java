@@ -23,7 +23,7 @@ public class UserController {
     @Resource
     private UserService userServer;
 
-    @RequestMapping(value="/loginCheck",method= RequestMethod.POST)
+    @RequestMapping(value="/loginCheck",method= RequestMethod.GET)
     public String loginCheck(@RequestParam String name,@RequestParam String pwd){
         User user  = null;
         try {
@@ -57,7 +57,7 @@ public class UserController {
     /**
      * @author kanxueke
      */
-    @RequestMapping(value = "/doRegister", method=RequestMethod.POST)
+    @RequestMapping(value = "/doRegister", method=RequestMethod.GET)
     public String doRegister(User user,Model model){
         int count = userServer.doRegister(user);
         if(count>0){
