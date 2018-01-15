@@ -33,13 +33,13 @@
         <!--用户已登陆-->
         <!--没有用户登陆-->
         <c:choose>
-            <c:when test="${sessionScope.user} != null">
+            <c:when test="${not empty user}">
                 <div class="top-login" >
                     <div class="top-login-img">
                         <img src="${pageContext.request.contextPath}/statics/img/8098750623_66292a35c0_z.jpg" />
                     </div>
                     <div>
-                        <span>用户名</span>|<a href="">退出</a>
+                        <span>${user.userName}</span>|<a href="">退出</a>
                     </div>
                 </div>
             </c:when>
