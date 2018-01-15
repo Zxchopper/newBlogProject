@@ -1,0 +1,104 @@
+/*博客后台管理样式*/
+.BizMain{
+	width: 90%;
+	margin: auto;
+	display: flex;
+}
+
+.function-nav{
+	border: 1px solid gainsboro;
+	width: 25%;
+}
+.function-nav ul{
+	padding: 0;
+}
+.function-nav ul li{
+	font-size: 30px;
+	line-height: 50px;
+	text-align: center;
+	height: 50px;
+}
+.function-nav ul li:hover{
+	border: 1px solid gray;
+}
+
+.function-nav ul li a{
+	text-decoration: none;
+}
+
+.function-page{
+	width: 70%;
+}
+
+/*新增博客页面样式*/
+.page-blog-title{
+	margin-left: 10px;
+	margin: 10px 0px;
+	padding: 0 10px;
+}
+.page-title{
+	width: 350px;
+}
+
+.textarea{
+	width: 80%;
+	height: 500px;
+	padding: 0 10px;
+}
+
+#textarea{
+	width: 100%;
+	height: 90%;
+}
+
+.select{
+	padding: 0 10px;
+}
+
+.page-blog-submit{
+	padding: 0 10px;
+	margin-top: 10px;
+}
+
+/*博客管理列表*/
+.function-page table{
+	width: 80%;
+	margin: auto;
+}
+.function-page table a{
+	text-decoration: none;
+}
+.function-page table tr{
+	height: 30px;
+	
+}
+.function-page table td{
+	text-align: center;
+}
+.function-page table td span{
+	font-size: 10px;
+	color: royalblue;
+	margin-left: 50px;
+}
+
+.function-page-blog-page{
+	padding: 0 55px;
+}
+
+.function-page-blog-page ul{
+	display: flex;
+	margin: auto;
+}
+.function-page-blog-page ul li{
+	margin-left: 20px;
+}
+.function-page-blog-page ul li a{
+	text-decoration: none;
+}
+
+
+/*分类管理样式*/
+.category-add{
+	margin-top: 20px;
+	margin-left: 20%;
+}
