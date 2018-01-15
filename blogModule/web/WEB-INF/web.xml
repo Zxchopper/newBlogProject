@@ -10,11 +10,12 @@
                 在web.xml中通过contextConfigLocation配置spring，
          contextConfigLocation参数定义了要装入的 Spring 配置文件。
     -->
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext-*.xml</param-value>
     </context-param>
-
+    <context-param> <param-name>kmRootKey</param-name> <param-value>km.root</param-value> </context-param>
     <!-- spring字符编码过滤器start-->
     <filter>
         <!--① Spring 编码过滤器 -->
