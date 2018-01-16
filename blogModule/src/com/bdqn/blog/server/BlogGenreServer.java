@@ -7,4 +7,5 @@ import java.util.List;
 public interface BlogGenreServer {
 
     List<BlogGenre> getBlogGenreAll();
+    int insert(BlogGenre blogGenre);
 }

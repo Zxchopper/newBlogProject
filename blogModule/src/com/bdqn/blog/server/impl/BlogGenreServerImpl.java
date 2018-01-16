@@ -17,4 +17,9 @@ public class BlogGenreServerImpl implements BlogGenreServer {
     public List<BlogGenre> getBlogGenreAll() {
         return BlogGenreMapper.getBlogGenreAll();
     }
+
+    @Override
+    public int insert(BlogGenre blogGenre) {
+        return BlogGenreMapper.insert(blogGenre);
+    }
 }

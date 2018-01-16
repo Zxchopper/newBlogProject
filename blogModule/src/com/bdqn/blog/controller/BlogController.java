@@ -14,6 +14,8 @@ import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.jms.Session;
@@ -49,7 +51,11 @@ public class BlogController {
     public String addBolg(@RequestParam Integer genreId, HttpServletRequest request, @RequestParam String title, @RequestParam String contentPath) {
         HttpSession Session = request.getSession();
         User user = (User) Session.getAttribute("user");
-        Integer uid = user.getUid();
+        Integer uid=null;
+        if(user!=null){
+             uid = user.getUid();
+        }
+
         if (title != null && uid != null && contentPath != null && genreId != null) {
             Blog blog = new Blog();
             blog.setTitle(title);
@@ -88,23 +94,29 @@ public class BlogController {
     }
 
     //删除博客
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping("/removeBlog")
-    public String removeBlog(Integer id) {
+    @ResponseBody
+    public String removeBlog(@RequestParam("bid") Integer id) {
         if (id != null) {
             Blog blog = blogService.selectByBid(id);
             if (blog != null) {
                 blogService.removeBlog(id);
+                return "true";
             }
-
-            return "blogWelcome";
         }
-        return null;
+        return "false";
     }
 
     /**
-     * 查询博客
+     * 首页博客
      * <p>
-     * 传入  uid用户ID   ， like  title 标题   ，pageNo
+     *   like  title 标题   ，pageNo
      */
     @RequestMapping("/selectBlog")
     public String selectBlog(Model Model, @RequestParam(value = "pageNo", required = false) Integer pageNo,
@@ -116,7 +128,7 @@ public class BlogController {
         }
         System.out.println("uid" +"aaa" + ",title" + title + "pageNo" + (pageSupport.getCurrentPageNo() - 1) + "pageSize" + pageSupport.getPageSize());
         List<Blog> blogs = blogService.selectAllBlog(null, title, pageSupport.getCurrentPageNo() - 1, pageSupport.getPageSize());
-
+        System.out.println(blogs+"ggggaa");
         pageSupport.setTotalCount(blogService.totalCount(null, title));
 
         pageSupport.setTotalPageCountByRs();
@@ -124,7 +136,7 @@ public class BlogController {
         Model.addAttribute("pages", pageSupport);
         Model.addAttribute("blogs", blogs);
         Model.addAttribute("BlogGenres", BlogGenres);
-        return "redirect: blogIndex";
+        return "blogIndex";
     }
 
 
@@ -138,13 +150,15 @@ public class BlogController {
         List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
         HttpSession Session = request.getSession();
         User user = (User) Session.getAttribute("user");
-        Integer uid = user.getUid();
+       // Integer uid = user.getUid();
+        Integer  uid=3;
         if (pageNo != null) {
             pageSupport.setCurrentPageNo(pageNo);
         }
         System.out.println("uid" + uid + ",title" + title + "pageNo" + (pageSupport.getCurrentPageNo() - 1) + "pageSize" + pageSupport.getPageSize());
         List<Blog> blogs = blogService.selectAllBlog(uid, title, pageSupport.getCurrentPageNo() - 1, pageSupport.getPageSize());
 
+        System.out.println(blogs);
         pageSupport.setTotalCount(blogService.totalCount(uid, title));
 
         pageSupport.setTotalPageCountByRs();

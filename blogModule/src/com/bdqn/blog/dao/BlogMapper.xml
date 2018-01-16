@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="createTime!=null">createTime=#{createTime},</if>
             <if test="title!=null">title=#{title},</if>
             <if test="contentPath!=null">contentPath=#{contentPath},</if>
-            <if test="readAmout!=null">readAmout=#{readAmout},</if>
+            <if test="genreId!=null">genreId=#{genreId},</if>
         </trim>
     </update>
 

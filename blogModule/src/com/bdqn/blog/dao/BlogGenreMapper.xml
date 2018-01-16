@@ -7,5 +7,10 @@
 <select id="getBlogGenreAll" resultType="BlogGenre">
     select * from bloggenre
 </select>
+    <insert id="insert" parameterType="blogGenre">
+        insert into bloggenre (genreName)values(#{genreName})
+
+    </insert>
+
 
 </mapper>
