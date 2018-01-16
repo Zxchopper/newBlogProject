@@ -42,43 +42,45 @@ public class BlogController {
     private BlogGenreServer blogGenreServer;
 
 
-    private PageSupport pageSupport=new PageSupport();
+    private PageSupport pageSupport = new PageSupport();
+
     //增加博客
-    @RequestMapping(value = "/add" ,method = RequestMethod.POST)
-    public String addBolg(@RequestParam Integer genreId,HttpServletRequest request,@RequestParam String title,@RequestParam String contentPath){
-        HttpSession Session= request.getSession();
-        User user=(User) Session.getAttribute("user");
-        Integer uid=user.getUid();
-        if(title!=null&&uid!=null&&contentPath!=null&&genreId!=null){
-           Blog blog=new Blog();
-           blog.setTitle(title);
-           blog.setContentPath(contentPath);
-           blog.setCreateTime(new Date());
-           blog.setUid(uid);
-           blog.setGenreId(genreId);
-           blog.setReadAmout(0);
-           blogService.addBlog(blog);
-           System.out.println("ggggg");
-       }
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addBolg(@RequestParam Integer genreId, HttpServletRequest request, @RequestParam String title, @RequestParam String contentPath) {
+        HttpSession Session = request.getSession();
+        User user = (User) Session.getAttribute("user");
+        Integer uid = user.getUid();
+        if (title != null && uid != null && contentPath != null && genreId != null) {
+            Blog blog = new Blog();
+            blog.setTitle(title);
+            blog.setContentPath(contentPath);
+            blog.setCreateTime(new Date());
+            blog.setUid(uid);
+            blog.setGenreId(genreId);
+            blog.setReadAmout(0);
+            blogService.addBlog(blog);
+            System.out.println("ggggg");
+        }
 
 
-          return  "redirect:selectUserBlog";
-      }
+        return "redirect:selectUserBlog";
+    }
 
     /**
      * 调到增加页面
      *
      * @return
      */
-    @RequestMapping(value = "/addPage" ,method = RequestMethod.GET)
-    public String addBlogPage(){
+    @RequestMapping(value = "/addPage", method = RequestMethod.GET)
+    public String addBlogPage() {
 
-        return  "blog/blogBizAdd";
+        return "blog/blogBizAdd";
     }
+
     //修改博客
     @RequestMapping("/modifyBlog")
-    public  String modifyBlog(@RequestParam(value = "blog" ,required = false)Blog blog){
-        if(blog !=null){
+    public String modifyBlog(@RequestParam(value = "blog", required = false) Blog blog) {
+        if (blog != null) {
             blogService.modifyBlog(blog);
             return "blogWelcome";
         }
@@ -87,10 +89,10 @@ public class BlogController {
 
     //删除博客
     @RequestMapping("/removeBlog")
-    public  String removeBlog(Integer id){
-        if(id !=null){
-            Blog blog=blogService.selectByBid(id);
-            if(blog!=null){
+    public String removeBlog(Integer id) {
+        if (id != null) {
+            Blog blog = blogService.selectByBid(id);
+            if (blog != null) {
                 blogService.removeBlog(id);
             }
 
@@ -98,66 +100,58 @@ public class BlogController {
         }
         return null;
     }
+
     /**
-     *  查询博客
-     *
-     *  传入  uid用户ID   ， like  title 标题   ，pageNo
+     * 查询博客
+     * <p>
+     * 传入  uid用户ID   ， like  title 标题   ，pageNo
      */
-    public void selectBlog(Model Model , @RequestParam(value = "pageNo" ,required = false) Integer pageNo,
-                             HttpServletRequest request,
-                             @RequestParam(value = "title" ,required = false)    String title){
-        List<BlogGenre> BlogGenres=blogGenreServer.getBlogGenreAll();
-      HttpSession Session= request.getSession();
-        User user=(User) Session.getAttribute("user");
-        Integer uid=user.getUid();
-        if(pageNo!=null){
+    @RequestMapping("/selectBlog")
+    public String selectBlog(Model Model, @RequestParam(value = "pageNo", required = false) Integer pageNo,
+                             @RequestParam(value = "title", required = false) String title) {
+        List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
+
+        if (pageNo != null) {
             pageSupport.setCurrentPageNo(pageNo);
         }
-        System.out.println("uid"+uid+",title"+title+"pageNo"+(pageSupport.getCurrentPageNo()-1)+"pageSize"+pageSupport.getPageSize());
-        List<Blog> blogs= blogService.selectAllBlog(uid,title,pageSupport.getCurrentPageNo()-1,pageSupport.getPageSize());
+        System.out.println("uid" +"aaa" + ",title" + title + "pageNo" + (pageSupport.getCurrentPageNo() - 1) + "pageSize" + pageSupport.getPageSize());
+        List<Blog> blogs = blogService.selectAllBlog(null, title, pageSupport.getCurrentPageNo() - 1, pageSupport.getPageSize());
 
-        pageSupport.setTotalCount(blogService.totalCount(uid,title) );
+        pageSupport.setTotalCount(blogService.totalCount(null, title));
 
         pageSupport.setTotalPageCountByRs();
 
-        Model.addAttribute("pages",pageSupport);
-        Model.addAttribute("blogs",blogs);
-        Model.addAttribute("BlogGenres",BlogGenres);
-        //return  "redirect:blog/page";
+        Model.addAttribute("pages", pageSupport);
+        Model.addAttribute("blogs", blogs);
+        Model.addAttribute("BlogGenres", BlogGenres);
+        return "redirect: blogIndex";
     }
 
-    /**
-     * 调用selectBlog实现的不同页面跳转
-     * Model 传入值，判断值的不用   return页面
-     * @return
-     */
-    @RequestMapping("/selectBlog")
-    public String blog(Model Model , @RequestParam(value = "pageNo" ,required = false) Integer pageNo,
-                       HttpServletRequest request,
-                       @RequestParam(value = "title" ,required = false)    String title){
-        selectBlog(Model,pageNo,request,title);
-                return "redirect: blogIndex";
-    }
 
     /**
-     * 返回  blogBizList
-     * @param Model
-     * @param pageNo
-     * @param request
-     * @param title
-     * @return
+     * 管理博客
      */
     @RequestMapping("/selectUserBlog")
-    public String selectUserBlog(Model Model , @RequestParam(value = "pageNo" ,required = false) Integer pageNo,
-                       HttpServletRequest request,
-                       @RequestParam(value = "title" ,required = false)    String title){
-        selectBlog(Model,pageNo,request,title);
+    public String selectUserBlog(Model Model, @RequestParam(value = "pageNo", required = false) Integer pageNo,
+                                 HttpServletRequest request,
+                                 @RequestParam(value = "title", required = false) String title) {
+        List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
+        HttpSession Session = request.getSession();
+        User user = (User) Session.getAttribute("user");
+        Integer uid = user.getUid();
+        if (pageNo != null) {
+            pageSupport.setCurrentPageNo(pageNo);
+        }
+        System.out.println("uid" + uid + ",title" + title + "pageNo" + (pageSupport.getCurrentPageNo() - 1) + "pageSize" + pageSupport.getPageSize());
+        List<Blog> blogs = blogService.selectAllBlog(uid, title, pageSupport.getCurrentPageNo() - 1, pageSupport.getPageSize());
+
+        pageSupport.setTotalCount(blogService.totalCount(uid, title));
+
+        pageSupport.setTotalPageCountByRs();
+
+        Model.addAttribute("pages", pageSupport);
+        Model.addAttribute("blogs", blogs);
+        Model.addAttribute("BlogGenres", BlogGenres);
         return "blog/blogBizList";
-
     }
-
-
-
-
-
 }
