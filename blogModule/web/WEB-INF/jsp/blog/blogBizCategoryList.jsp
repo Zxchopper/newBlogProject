@@ -22,22 +22,12 @@
                         <th>标题</th>
                         <th>管理</th>
                     </tr>
-                    <tr>
-                        <td><input type="text" disabled="" class="edit" value="测试"><span  class="fn save" ><a class="toSave">保存</a><a class="cancel">取消</a></span></td>
-                        <td><a class="toEdit">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" disabled="" class="edit" value="测试"><span  class="fn save"><a class="toSave">保存</a><a class="cancel">取消</a></span></td>
-                        <td><a class="toEdit">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" disabled="" class="edit" value="测试"><span  class="fn save"><a class="toSave">保存</a><a class="cancel">取消</a></span></td>
-                        <td><a class="toEdit">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" disabled="" class="edit" value="测试"><span  class="fn save"><a class="toSave">保存</a><a class="cancel">取消</a></span></td>
-                        <td><a class="toEdit">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
-                    </tr>
+                    <c:forEach items="${BlogGenres}" var="BlogGenre" >
+                        <tr>
+                            <td><input type="text" disabled="" class="edit" value="${BlogGenre.genreName}"><span  class="fn save" ><a class="toSave">保存</a><a class="cancel">取消</a></span></td>
+                            <td><a class="toEdit">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                        </tr>
+                    </c:forEach>
                 </table>
                 </table>
             </div>

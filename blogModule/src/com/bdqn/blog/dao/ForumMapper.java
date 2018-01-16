@@ -20,10 +20,12 @@ public interface ForumMapper{
 	//修改
 	int updateForum(Forum forum);
 	//删除
-	int deleteForum(@Param("id") Integer id);
+	int deleteForum(@Param("fid") Integer fid);
 	//分页
-	List<Forum> pageFind(@Param("pageNo") Integer pageNo, @Param("pageSize") Integer pageSize);
+	List<Forum> pageFind(@Param("currentPageNo") Integer currentPageNo, @Param("pageSize") Integer pageSize);
 	//显示论坛内容
-	Forum show(@Param("id") Integer id);
+	Forum show(@Param("uid") Integer uid);
+	//总条数
+	int totalCount();
 
 }

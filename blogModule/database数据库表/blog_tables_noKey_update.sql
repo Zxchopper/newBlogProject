@@ -242,7 +242,7 @@ CREATE TABLE `user`
 (
    uid                  INT(8) NOT NULL,
    userName             VARCHAR(20),
-   userPassword         VARCHAR(20),
+   userPassword         VARCHAR(100),
    nickName             VARCHAR(30),
    NAME                 VARCHAR(20),
    sex                  CHAR(4),

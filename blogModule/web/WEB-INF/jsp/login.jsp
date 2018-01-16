@@ -38,6 +38,7 @@
             <dd><input id="button" tabindex="3" name="" type="submit" class="btn" value="登录" onclick="login()"/></dd>
         </dl>
     </form>
+    <div style="color:red">${error}</div>
 </div>
 </body>
 </html>

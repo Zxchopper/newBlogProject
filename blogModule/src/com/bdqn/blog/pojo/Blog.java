@@ -14,7 +14,7 @@ public class Blog {
 	private Integer uid;//用户id
 	private String contentPath;//内容文本路径
 	private Integer readAmout;//访问数量
-	private Integer genreId;
+	private Integer genreId;//分类id
     private List<BlogComment> blogCommentList;//博客评论集合
     public Integer getBid() {
 		return bid;
@@ -63,5 +63,19 @@ public class Blog {
 
 	public void setGenreId(Integer genreId) {
 		this.genreId = genreId;
+	}
+
+	@Override
+	public String toString() {
+		return "Blog{" +
+				"bid=" + bid +
+				", createTime=" + createTime +
+				", title='" + title + '\'' +
+				", uid=" + uid +
+				", contentPath='" + contentPath + '\'' +
+				", readAmout=" + readAmout +
+				", genreId=" + genreId +
+				", blogCommentList=" + blogCommentList +
+				'}';
 	}
 }

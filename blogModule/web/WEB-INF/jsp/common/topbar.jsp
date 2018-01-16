@@ -12,8 +12,8 @@
     <div id="top-navbar">
         <img src="${pageContext.request.contextPath}/statics/themes/black/images/loading.gif" id="logo" />
         <ul class="top-ul">
-            <li><a href="${pageContext.request.contextPath}/skip/toblog" >博客</a></li>
-            <li><a href="${pageContext.request.contextPath}/skip/tobbs">论坛</a></li>
+            <li><a href="${pageContext.request.contextPath}/blog/selectBlog" >博客</a></li>
+            <li><a href="${pageContext.request.contextPath}/fo/bbs">论坛</a></li>
             <li><a href="">下载</a></li>
             <li><a href="">商城</a></li>
         </ul>
@@ -25,7 +25,7 @@
         <div class="top-writeblog">
             <!--<img class="top-writeblog-img" src="../themes/black/images/messager_icons.png"/>-->
         </div>
-        <a class="top-writeblog-text" href="" >写博客</a>
+        <a class="top-writeblog-text" href="${pageContext.request.contextPath}/blog/addPage" >写博客</a>
 
 
 
@@ -39,7 +39,7 @@
                         <img src="${pageContext.request.contextPath}/statics/img/8098750623_66292a35c0_z.jpg" />
                     </div>
                     <div>
-                        <span>${user.userName}</span>|<a href="">退出</a>
+                        <span>${user.userName}</span>|<a href="${pageContext.request.contextPath}/user/exit">退出</a>
                     </div>
                 </div>
             </c:when>

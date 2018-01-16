@@ -34,6 +34,10 @@ public interface BlogMapper{
 	 * @param  bid
 	 * @return Blog
 	 */
-	Blog selectByBid(@Param("bid") int Bid);
+	Blog selectByBid(@Param("bid") int bid);
+
+	/**
+	 * 通过BlogGenre   的id   删除博客
+	 */
 
 }
