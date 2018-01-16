@@ -23,23 +23,23 @@
                 </tr>
                 <tr>
                     <td><a href="">文章标题</a><span>2018-01-13</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                    <td><a href="">修改</a>&nbsp;&nbsp;<a class="delect" data-blogId="1" >删除</a></td>
                 </tr>
                 <tr>
                     <td><a href="">文章标题</a><span>2018-01-13</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                    <td><a href="">修改</a>&nbsp;&nbsp;<a class="delect" data-blogId="2" >删除</a></td>
                 </tr>
                 <tr>
                     <td><a href="">文章标题</a><span>2018-01-13</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                    <td><a href="">修改</a>&nbsp;&nbsp;<a class="delect" data-blogId="3" >删除</a></td>
                 </tr>
                 <tr>
                     <td><a href="">文章标题</a><span>2018-01-13</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                    <td><a href="">修改</a>&nbsp;&nbsp;<a class="delect" data-blogId="4" >删除</a></td>
                 </tr>
                 <tr>
                     <td><a href="">文章标题</a><span>2018-01-13</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                    <td><a href="">修改</a>&nbsp;&nbsp;<a class="delect" data-blogId="5" >删除</a></td>
                 </tr>
             </table>
             <div class="function-page-blog-page">
@@ -56,4 +56,31 @@
 </div>
     </body>
 </html>
+
+<script type="text/javascript">
+    $(function () {
+        $(".delect").click(function(){
+            alert($('.delect').attr("data-blogId"));
+            $.messager.confirm('消息','确定删除吗？',function(r){
+                if(r){
+                    $.ajax({
+                        type:'post',
+                        url:"/skip/test",
+                        dataType:'text',
+                        success:callBack
+                    });
+                }
+            })
+        })
+    })
+
+    function callBack (data){
+        if(data == 'true'){
+            $.messager.alert('消息','删除成功','info',function(){
+                location.href='/bbsIndex.jsp';
+            })
+        }
+    }
+</script>
+
 
