@@ -6,13 +6,18 @@ import com.bdqn.blog.server.BlogGenreServer;
 import com.bdqn.blog.server.BlogService;
 import com.bdqn.blog.utils.PageSupport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.jms.Session;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -39,22 +44,35 @@ public class BlogController {
     private PageSupport pageSupport=new PageSupport();
     //增加博客
     @RequestMapping(value = "/add" ,method = RequestMethod.POST)
-    public String addBolg(@RequestParam String title,@RequestParam String contentPath){
-        System.out.println(1111112);
-        Blog blog=new Blog();
-        blog.setTitle(title);
-        blog.setContentPath(contentPath);
-      if(blog !=null){
-          blog.setBid(1011);
-          blog.setReadAmout(66);
-          blog.setCreateTime(new Date());
-          blogService.addBlog(blog);
-          System.out.println(blog.getBid()+"GGGGG");
-          return  "blogWelcome";
+    public String addBolg(@RequestParam Integer genreId,HttpServletRequest request,@RequestParam String title,@RequestParam String contentPath){
+        HttpSession Session= request.getSession();
+        Integer uid=(Integer) Session.getAttribute("uid");
+                uid=3;
+        if(title!=null&&uid!=null&&contentPath!=null&&genreId!=null){
+           Blog blog=new Blog();
+           blog.setTitle(title);
+           blog.setContentPath(contentPath);
+           blog.setCreateTime(new Date());
+           blog.setUid(uid);
+           blog.setGenreId(genreId);
+           blog.setReadAmout(0);
+           blogService.addBlog(blog);
+           System.out.println("ggggg");
+       }
+
+
+          return  "redirect:selectUserBlog";
       }
 
+    /**
+     * 调到增加页面
+     *
+     * @return
+     */
+    @RequestMapping(value = "/addPage" ,method = RequestMethod.GET)
+    public String addBlogPage(){
 
-        return null;
+        return  "blog/blogBizAdd";
     }
     //修改博客
     @RequestMapping("/modifyBlog")
@@ -84,13 +102,12 @@ public class BlogController {
      *
      *  传入  uid用户ID   ， like  title 标题   ，pageNo
      */
-
-    @RequestMapping("/selectBlog")
-    public String selectBlog(Model Model , @RequestParam(value = "pageNo" ,required = false) Integer pageNo,
-                             @RequestParam(value = "uid" ,required = false)   Integer uid,
+    public void selectBlog(Model Model , @RequestParam(value = "pageNo" ,required = false) Integer pageNo,
+                             HttpServletRequest request,
                              @RequestParam(value = "title" ,required = false)    String title){
         List<BlogGenre> BlogGenres=blogGenreServer.getBlogGenreAll();
-
+      HttpSession Session= request.getSession();
+        Integer uid=(Integer) Session.getAttribute("uid");
         if(pageNo!=null){
             pageSupport.setCurrentPageNo(pageNo);
         }
@@ -104,8 +121,39 @@ public class BlogController {
         Model.addAttribute("pages",pageSupport);
         Model.addAttribute("blogs",blogs);
         Model.addAttribute("BlogGenres",BlogGenres);
-        return  "test";
+        //return  "redirect:blog/page";
     }
+
+    /**
+     * 调用selectBlog实现的不同页面跳转
+     * Model 传入值，判断值的不用   return页面
+     * @return
+     */
+    @RequestMapping("/selectBlog")
+    public String blog(Model Model , @RequestParam(value = "pageNo" ,required = false) Integer pageNo,
+                       HttpServletRequest request,
+                       @RequestParam(value = "title" ,required = false)    String title){
+        selectBlog(Model,pageNo,request,title);
+                return "redirect: blogIndex";
+    }
+
+    /**
+     * 返回  blogBizList
+     * @param Model
+     * @param pageNo
+     * @param request
+     * @param title
+     * @return
+     */
+    @RequestMapping("/selectUserBlog")
+    public String selectUserBlog(Model Model , @RequestParam(value = "pageNo" ,required = false) Integer pageNo,
+                       HttpServletRequest request,
+                       @RequestParam(value = "title" ,required = false)    String title){
+        selectBlog(Model,pageNo,request,title);
+        return "blog/blogBizList";
+
+    }
+
 
 
 
