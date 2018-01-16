@@ -23,19 +23,19 @@
                         <th>管理</th>
                     </tr>
                     <tr>
-                        <td><input type="text" disabled="" class="edit" value="测试"></td>
+                        <td><input type="text" disabled="" class="edit" value="测试"><span  class="fn save" ><a class="toSave">保存</a><a class="cancel">取消</a></span></td>
                         <td><a class="toEdit">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
                     </tr>
                     <tr>
-                        <td><input type="text" disabled="" class="edit" value="测试"></td>
+                        <td><input type="text" disabled="" class="edit" value="测试"><span  class="fn save"><a class="toSave">保存</a><a class="cancel">取消</a></span></td>
                         <td><a class="toEdit">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
                     </tr>
                     <tr>
-                        <td><input type="text" disabled="" class="edit" value="测试"></td>
+                        <td><input type="text" disabled="" class="edit" value="测试"><span  class="fn save"><a class="toSave">保存</a><a class="cancel">取消</a></span></td>
                         <td><a class="toEdit">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
                     </tr>
                     <tr>
-                        <td><input type="text" disabled="" class="edit" value="测试"></td>
+                        <td><input type="text" disabled="" class="edit" value="测试"><span  class="fn save"><a class="toSave">保存</a><a class="cancel">取消</a></span></td>
                         <td><a class="toEdit">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
                     </tr>
                 </table>
@@ -53,4 +53,44 @@
 </div>
     </body>
 </html>
+
+<script>
+    $(function(){
+        $(".toEdit").click(function(){
+            var $_this = $(this);
+            alert($_this.parents("tr").find(".edit").val());
+            $_this.parents("tr").find(".edit").removeAttr("disabled");
+            $_this.parents("tr").find(".fn").removeClass("save");
+        })
+
+        $(".cancel").click(function(){
+            var $_this = $(this);
+            alert($_this.parents("tr").find(".edit").val());
+            $_this.parents("tr").find(".edit").attr("disabled","disabled");
+            $_this.parents("tr").find(".fn").addClass("save");
+        })
+
+        $(".toSave").click(function(){
+            var $_this = $(this);
+            var newCategory=$_this.parents("tr").find(".edit").val()
+            alert($_this.parents("tr").find(".edit").val());
+            $_this.parents("tr").find(".edit").attr("disabled","disabled");
+            $_this.parents("tr").find(".fn").addClass("save");
+            $.ajax({
+                type:"get",
+                url:"/skip/test",
+                data:"newCategory="+newCategory,
+                dataType:"text",
+                success:callBack
+            });
+        })
+    })
+
+    function callBack(data){
+        if(data == "true"){
+            $.messager.alert('消息','修改成功','info');
+        }
+    }
+
+</script>
 

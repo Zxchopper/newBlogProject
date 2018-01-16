@@ -3,6 +3,7 @@ package com.bdqn.blog.controller;
 
 import com.bdqn.blog.pojo.User;
 import com.bdqn.blog.server.UserService;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *Created by IntelliJ IDEA.
@@ -23,12 +26,13 @@ public class UserController {
     @Resource
     private UserService userServer;
 
-    @RequestMapping(value="/loginCheck",method= RequestMethod.GET)
-    public String loginCheck(@RequestParam String name,@RequestParam String pwd){
+    @RequestMapping(value="/loginCheck",method= RequestMethod.POST)
+    public String loginCheck(@RequestParam String name, @RequestParam String pwd, HttpServletRequest request){
         User user  = null;
         try {
             user = userServer.getLoginUser(name,pwd);
-
+            HttpSession session = request.getSession();
+            session.setAttribute("user",user);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,7 +40,7 @@ public class UserController {
             return "list.jsp";
         }*/
 
-        return "redirect:/blogWelcome";
+        return "redirect:/blogIndex.jsp";
 
 
     }
@@ -57,7 +61,7 @@ public class UserController {
     /**
      * @author kanxueke
      */
-    @RequestMapping(value = "/doRegister", method=RequestMethod.GET)
+    @RequestMapping(value = "/doRegister", method=RequestMethod.POST)
     public String doRegister(User user,Model model){
         int count = userServer.doRegister(user);
         if(count>0){

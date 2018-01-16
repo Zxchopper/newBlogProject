@@ -19,23 +19,23 @@
         <%@include file="/WEB-INF/jsp/common/blogBizNav.jsp"%>
         <!--具体功能页面-->
         <div class="function-page">
-            <form>
+            <form action="add" method="post">
                 <div class="page-blog-title">
-                    <span>博客标题：</span><input type="text" name="" class="page-title" />
+                    <span>博客标题：</span><input type="text" name="title" class="page-title" />
                 </div>
                 <div class="textarea">
-                    <textarea id="textarea" class="xheditor {skin:'default'}"></textarea>
+                    <textarea id="textarea" name="contentPath" class="xheditor {skin:'default'}"></textarea>
                 </div>
 
                 <div class="select">
-                    类别：<select>
+                    类别：<select name="genreId">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
                 </select>
                 </div>
-
+                <input value="${uid}" name="uid" type="hidden">
                 <div class="page-blog-submit">
                     <input value="发表博客" type="submit" />
                 </div>

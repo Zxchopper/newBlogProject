@@ -21,26 +21,13 @@
                     <th>标题</th>
                     <th>管理</th>
                 </tr>
+                <c:forEach items="${blogs}" var="blog" varStatus="status">
                 <tr>
-                    <td><a href="">文章标题</a><span>2018-01-13</span></td>
+                    <td><a href="">文章标题</a><span>${blog.title}</span>&nbsp;&nbsp;<span>${blog.createTime}</span></td>
                     <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
                 </tr>
-                <tr>
-                    <td><a href="">文章标题</a><span>2018-01-13</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td><a href="">文章标题</a><span>2018-01-13</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td><a href="">文章标题</a><span>2018-01-13</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td><a href="">文章标题</a><span>2018-01-13</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
-                </tr>
+
+                </c:forEach>
             </table>
             <div class="function-page-blog-page">
                 <ul>
