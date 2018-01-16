@@ -2,6 +2,7 @@ package com.bdqn.blog.controller;
 
 import com.bdqn.blog.pojo.Blog;
 import com.bdqn.blog.pojo.BlogGenre;
+import com.bdqn.blog.pojo.User;
 import com.bdqn.blog.server.BlogGenreServer;
 import com.bdqn.blog.server.BlogService;
 import com.bdqn.blog.utils.PageSupport;
@@ -46,8 +47,8 @@ public class BlogController {
     @RequestMapping(value = "/add" ,method = RequestMethod.POST)
     public String addBolg(@RequestParam Integer genreId,HttpServletRequest request,@RequestParam String title,@RequestParam String contentPath){
         HttpSession Session= request.getSession();
-        Integer uid=(Integer) Session.getAttribute("uid");
-                uid=3;
+        User user=(User) Session.getAttribute("user");
+        Integer uid=user.getUid();
         if(title!=null&&uid!=null&&contentPath!=null&&genreId!=null){
            Blog blog=new Blog();
            blog.setTitle(title);
@@ -107,7 +108,8 @@ public class BlogController {
                              @RequestParam(value = "title" ,required = false)    String title){
         List<BlogGenre> BlogGenres=blogGenreServer.getBlogGenreAll();
       HttpSession Session= request.getSession();
-        Integer uid=(Integer) Session.getAttribute("uid");
+        User user=(User) Session.getAttribute("user");
+        Integer uid=user.getUid();
         if(pageNo!=null){
             pageSupport.setCurrentPageNo(pageNo);
         }
