@@ -39,7 +39,7 @@
                         <img src="${pageContext.request.contextPath}/statics/img/8098750623_66292a35c0_z.jpg" />
                     </div>
                     <div>
-                        <span>${user.userName}</span>|<a href="">退出</a>
+                        <span>${user.userName}</span>|<a href="${pageContext.request.contextPath}/user/exit">退出</a>
                     </div>
                 </div>
             </c:when>
