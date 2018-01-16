@@ -39,9 +39,10 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       /* if(user !=null){
-            return "list.jsp";
-        }*/
+        if(user ==null){
+            request.setAttribute("error","登录失败,密码或用户名错误");
+            return "login";
+        }
 
         return "redirect:/blog/selectBlog";
 
