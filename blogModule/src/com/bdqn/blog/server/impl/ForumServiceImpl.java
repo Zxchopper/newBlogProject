@@ -12,26 +12,35 @@ import java.util.List;
 public class ForumServiceImpl implements ForumService{
     @Resource
     private ForumMapper forumMapper;
+
     @Override
-    public int addForum(Forum forum) {
-        return forumMapper.insertForum(forum);
+    public int insertForum(Forum forum) {
+        return 0;
     }
 
     @Override
-    public int modifyForum(Forum forum) {
+    public int updateForum(Forum forum) {
         return forumMapper.updateForum(forum);
     }
 
     @Override
-    public int removeForum(Integer id) {
-        return forumMapper.deleteForum(id);
+    public int deleteForum(Integer fid) {
+        return forumMapper.deleteForum(fid);
     }
 
     @Override
-    public List<Forum> pageFind(Integer pageNo, Integer pageSize) {
-        return forumMapper.pageFind(pageNo, pageSize);
+    public List<Forum> pageFind(Integer currentPageNo, Integer pageSize) {
+        return forumMapper.pageFind(currentPageNo,pageSize);
     }
 
     @Override
-    public Forum show(Integer id){return forumMapper.show(id); }
+    public int totalCount() {
+        return forumMapper.totalCount();
+    }
+
+    @Override
+    public Forum show(Integer uid) {
+        return forumMapper.show(uid);
+
+    }
 }
