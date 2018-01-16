@@ -175,6 +175,6 @@ public class BlogController {
     public String selectBlogGenres(Model Model){
     List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
     Model.addAttribute("BlogGenres", BlogGenres);
-    return "blogBizCategoryList";
+    return "blog/blogBizCategoryList";
 }
 }

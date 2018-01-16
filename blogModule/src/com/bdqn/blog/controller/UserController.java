@@ -43,7 +43,7 @@ public class UserController {
             return "list.jsp";
         }*/
 
-        return "redirect:/blogIndex.jsp";
+        return "redirect:/blog/selectBlog";
 
 
     }

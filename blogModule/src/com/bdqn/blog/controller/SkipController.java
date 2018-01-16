@@ -34,10 +34,10 @@ public class SkipController {
        /* return  "bbs/bbsPartList";*/
       /* return  "bbs/bbsView";*/
       /*return  "blog/blogCategoryList";*/
-      /*return  "blog/blogBizList";*/
-       /* return  "blog/blogBizAdd";*/
-        return  "blog/blogBizCategoryList";
+      return  "blog/blogBizList";
         /*return  "blog/blogText";*/
+       /* return  "blog/blogBizAdd";*/
+        /*return  "blog/blogBizCategoryList";*/
         /*return "redirect:/bbsIndex.jsp";*/
     }
 
