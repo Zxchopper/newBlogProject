@@ -3,6 +3,7 @@ package com.bdqn.blog.controller;
 
 import com.bdqn.blog.pojo.User;
 import com.bdqn.blog.server.UserService;
+import com.bdqn.blog.utils.MD5Tool;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,9 @@ public class UserController {
     public String loginCheck(@RequestParam String name, @RequestParam String pwd, HttpServletRequest request){
         User user  = null;
         try {
-            user = userServer.getLoginUser(name,pwd);
+            //密码加密
+            String newPwd = MD5Tool.MD5(pwd);
+            user = userServer.getLoginUser(name,newPwd);
             HttpSession session = request.getSession();
             session.setAttribute("user",user);
         } catch (Exception e) {
@@ -63,7 +66,11 @@ public class UserController {
      */
     @RequestMapping(value = "/doRegister", method=RequestMethod.POST)
     public String doRegister(User user,Model model){
+        String userPassword = user.getUserPassword();
+        String newUserPassword = MD5Tool.MD5(userPassword);
+        user.setUserPassword(newUserPassword);
         int count = userServer.doRegister(user);
+        user.setUserPassword(userPassword);
         if(count>0){
             model.addAttribute("user",user);
             return"login";
