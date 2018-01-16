@@ -147,7 +147,7 @@ public class BlogController {
     public String selectUserBlog(Model Model, @RequestParam(value = "pageNo", required = false) Integer pageNo,
                                  HttpServletRequest request,
                                  @RequestParam(value = "title", required = false) String title) {
-        List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
+
         HttpSession Session = request.getSession();
         User user = (User) Session.getAttribute("user");
        // Integer uid = user.getUid();
@@ -165,7 +165,16 @@ public class BlogController {
 
         Model.addAttribute("pages", pageSupport);
         Model.addAttribute("blogs", blogs);
-        Model.addAttribute("BlogGenres", BlogGenres);
+
         return "blog/blogBizList";
     }
+
+
+
+    @RequestMapping("/selectBlogGenres")
+    public String selectBlogGenres(Model Model){
+    List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
+    Model.addAttribute("BlogGenres", BlogGenres);
+    return "blogBizCategoryList";
+}
 }
