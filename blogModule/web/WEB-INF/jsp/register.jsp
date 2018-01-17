@@ -45,10 +45,10 @@
             function callBcak (data){
                 if(data == 'exist'){
                    // alert("用户名已存在！");
-                  $("#userName").next().html("用户名已存在！")
+                  $("#userName").next().html("用户名已存在！").css({"color":"red","font-size":"12px"});
                 }else{
                    // alert("用户名可以使用！");
-                    $("#userName").next().html("用户名可以使用！")
+                    $("#userName").next().html("用户名可以使用！").css({"color":"green","font-size":"12px"});
                 }
             }
 
