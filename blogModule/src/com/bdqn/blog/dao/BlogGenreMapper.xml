@@ -9,14 +9,16 @@
 </select>
     <insert id="insert" parameterType="blogGenre">
         insert into bloggenre (genreName)values(#{genreName})
+
     </insert>
+    <delete id="delete">
+        delete from bloggenre where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="blogGenre">
+        UPDATE bloggenre set genreName = #{genreName} where id = #{id}
+    </update>
     <select id="selectById" resultType="BlogGenre">
         select * from BlogGenre where id=#{id}
     </select>
-    <update id="update" parameterType="BlogGenre">
-        UPDATE  BlogGenre set genreName=#{genreName} where id=#{id}
-
-    </update>
-
-
 </mapper>

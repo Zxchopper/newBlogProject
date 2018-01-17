@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>帐号登录</title>
-    <link rel="stylesheet" href="/statics/css/register.css" type="text/css"/>
+    <link rel="stylesheet" href="/statics/css/Login&Register.css" type="text/css"/>
     <script type="text/javascript" src="../../statics/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" language="javascript">
         function login(){
@@ -20,25 +20,30 @@
 </head>
 
 <body>
-<div id="fr1">
+<section id="fr1">
     <h1 class="hr_1">帐号登录</h1>
-    <form name="login1" action="loginCheck" method="post">
+    <form name="login1" action="doLogin" method="post">
         <input type="hidden" id="gps" name="gps" value=""/>
 
         <dl>
-            <dd><input id="userName" name="name" tabindex="1" placeholder="输入字母开头的用户名" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}" class="" type="text" required
-                       value="${user.userName}"/><span></span></dd>
-        </dl>
-        <dl>
-            <dd><input id="userPassword" name="pwd" tabindex="2" placeholder="输入密码，不少于6个字符" pattern="[a-zA-Z0-9]{6,20}" class="" type="password" required
-                       value="${user.userPassword}"/><span></span></dd>
+            <dt>&nbsp;</dt>
+            <dd class="login_1"><input id="userName1" name="userName" tabindex="1" placeholder="输入字母开头的用户名" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}" class="login" type="text" required
+                                       value=""/><span></span></dd>
         </dl>
         <dl>
             <dt>&nbsp;</dt>
-            <dd><input id="button" tabindex="3" name="" type="submit" class="btn" value="登录" onclick="login()"/></dd>
+            <dd class="login_1"><input id="userPassword1" name="userPassword" tabindex="2" placeholder="输入密码，不少于6个字符" pattern="[a-zA-Z0-9]{6,20}" class="login" type="password" required
+                                       value=""/><span></span></dd>
+        </dl>
+        <dl>
+            <dt>&nbsp;</dt>
+            <dd id="button"><input tabindex="3" name="" type="image" src="/statics/img/login.jpg" class="btn" value="登录" onclick="login()"/></dd>
+        </dl>
+        <dl>
+            <dt>  </dt>
+            <dd id="forget"><a href="goRegister">没有账户？点击注册</a></dd>
         </dl>
     </form>
-    <div style="color:red">${error}</div>
-</div>
+</section>
 </body>
 </html>
