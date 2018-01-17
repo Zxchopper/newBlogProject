@@ -14,7 +14,7 @@
 <body>
     <h2>文件下载</h2>
     <a href="upload/1.jpg">1.jpg</a>
-    <a href="upload/2.jpg">2.jpg</a>
+    <img src="/upload/1.jpg" alt="">
     <a href="upload/3.jpg">3.jpg</a>
     <a href="upload/4.jpg">4.jpg</a>
 </body>
