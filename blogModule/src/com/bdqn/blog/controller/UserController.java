@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -70,6 +71,11 @@ public class UserController {
         String userPassword = user.getUserPassword();
         String newUserPassword = MD5Tool.MD5(userPassword);
         user.setUserPassword(newUserPassword);
+        //通过用户名查重
+       /* if(userServer.checkUserByName(user.getUserName())!=null){
+            model.addAttribute("RegError","用户名重复");
+            return "register";
+        }*/
         int count = userServer.doRegister(user);
         user.setUserPassword(userPassword);
         if(count>0){
@@ -77,6 +83,15 @@ public class UserController {
             return"login";
         }
         return "fail";
+    }
+    @RequestMapping(value = "checkUserName", method=RequestMethod.POST)
+    @ResponseBody
+    public String checkUserName(@RequestParam(value = "userName") String userName){
+        if(userServer.checkUserByName(userName)!=null){
+
+            return "exist";
+        }
+        return "noExist";
     }
 
 }

@@ -7,7 +7,7 @@
     <script type="text/javascript" src="../../statics/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" language="JavaScript">
         $(document).ready(function () {
-            $(".btn").click(function () {
+                $(".btn").click(function () {
                 var flag=false;
                 var u=document.getElementById("userName");
                 if(u.validity.patternMismatch){
@@ -30,6 +30,28 @@
 
                 return flag;
             })
+
+            $("#userName").blur(function () {
+               // alert("111");
+                var userName = $('#userName').val();
+                $.ajax({
+                    type:'post',
+                    url:"/user/checkUserName",
+                    data:"userName="+userName,
+                    dataType:'text',
+                    success:callBcak
+                    })
+            })
+            function callBcak (data){
+                if(data == 'exist'){
+                   // alert("用户名已存在！");
+                  $("#userName").next().html("用户名已存在！")
+                }else{
+                   // alert("用户名可以使用！");
+                    $("#userName").next().html("用户名可以使用！")
+                }
+            }
+
         })
     </script>
 </head>
@@ -71,6 +93,7 @@
         </dl>
 
     </form>
+    <div id="error">${RegError}</div>
 </section>
 
 </body>

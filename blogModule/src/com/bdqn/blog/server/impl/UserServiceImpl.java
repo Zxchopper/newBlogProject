@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService{
 
        return userMapper.getLoginUser(name,pwd);
     }
-
+    //用户注册
     @Override
     public int doRegister(User user) {
 
@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public int addUser(User user) {
-        return userMapper.insertUser(user);
+    public User checkUserByName(String userName) {
+        return userMapper.getUserByName(userName);
     }
 
     @Override
@@ -52,4 +52,5 @@ public class UserServiceImpl implements UserService{
     public List<BlogComment> selectAllBlogcomment(int uid, int pageNo, int pageSize) {
         return userMapper.getBlogCommentListByUserId(uid,pageNo,pageSize);
     }
+
 }
