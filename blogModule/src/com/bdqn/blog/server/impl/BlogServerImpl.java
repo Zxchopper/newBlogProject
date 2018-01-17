@@ -68,4 +68,14 @@ public class BlogServerImpl implements BlogService {
     public Blog selectByBid(Integer bid) {
         return blogMapper.selectByBid(bid);
     }
+
+    /**
+     * 通过bid找blog
+     * @param bid blog的id
+     * @return blog对象
+     */
+    @Override
+    public Blog getBlogByBid(Integer bid) {
+        return blogMapper.getBlogById(bid);
+    }
 }

@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.bdqn.blog.dao.BlogMapper">
     <insert id="insertBlog" parameterType="Blog">
         insert into Blog
-        (uid,createTime,title,contentPath,readAmout)
-        values(#{uid},#{createTime},#{title},#{contentPath},#{readAmout})
+        (uid,createTime,title,contentPath,readAmout,genreId)
+        values(#{uid},#{createTime},#{title},#{contentPath},#{readAmout},#{genreId})
     </insert>
     <update id="updateBlog" parameterType="Blog">
         update Blog
@@ -51,4 +51,9 @@ limit #{pageNo},#{pageSize}
     <delete id="deleteBlog" parameterType="Integer">
         delete from blog where bid  =  #{bid}
     </delete>
+
+    <!--通过bid获取blog-->
+    <select id="getBlogById" resultType="blog">
+        select * From blog where bid = #{bid}
+    </select>
 </mapper>

@@ -9,7 +9,7 @@
     <div class="function-nav">
         <ul>
             <li><a href="/blog/addPage">写博客</a></li>
-            <li><a href="/blog/selectUserBlog">管理博客</a></li>
+            <li><a href="/blog/selectUserBlog?pageNo=1">管理博客</a></li>
             <li><a href="/blog/selectBlogGenres">管理分类</a></li>
             <li><a href="">我的评论</a></li>
         </ul>

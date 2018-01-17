@@ -94,4 +94,17 @@ public class UserController {
         return "noExist";
     }
 
+    /**
+     * 退出功能
+     * @author linbingyang
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/exit")
+    public String exit(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.removeAttribute("user");
+        return "redirect:/blog/selectBlog";
+    }
+
 }

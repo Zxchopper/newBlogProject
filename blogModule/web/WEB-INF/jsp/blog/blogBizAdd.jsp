@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.bdqn.blog.server.impl.BlogGenreServerImpl" %>
+<%@ page import="com.bdqn.blog.server.BlogGenreServer" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.bdqn.blog.pojo.BlogGenre" %><%--
   Created by IntelliJ IDEA.
   User: younger
   Date: 2018/1/10
@@ -28,11 +31,20 @@
                 </div>
 
                 <div class="select">
+                 <%--   <%
+                    BlogGenreServer blogGenreServer= new  BlogGenreServerImpl();
+                    List<BlogGenre> blogGenreList= blogGenreServer.getBlogGenreAll();
+                %>--%>
                     类别：<select name="genreId">
-                    <option>1</option>
+
+                     <c:forEach items="${BlogGenres}" var="blogGenre" varStatus="status">
+                         <option value="${ status.index + 1}">${blogGenre.genreName}</option>
+
+                     </c:forEach>
+                    <%--<option>1</option>
                     <option>2</option>
                     <option>3</option>
-                    <option>4</option>
+                    <option>4</option>--%>
                 </select>
                 </div>
                 <input value="${uid}" name="uid" type="hidden">

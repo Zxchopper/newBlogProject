@@ -19,7 +19,6 @@ public interface BlogMapper{
 
 	/**
 	 * 总页数
-
 	 */
 	int totalCount(@Param("uid") Integer uid,@Param("title") String title);
 	/**
@@ -39,5 +38,13 @@ public interface BlogMapper{
 	/**
 	 * 通过BlogGenre   的id   删除博客
 	 */
+
+
+	/**
+	 * 通过bid获取blog对象
+	 * @param bid
+	 * @return
+	 */
+	public Blog getBlogById(@Param("bid") Integer bid);
 
 }

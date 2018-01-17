@@ -26,4 +26,7 @@ public interface BlogService{
 
 	Blog selectByBid( Integer Bid);
 
+	//通过bid找blog
+	public Blog getBlogByBid(Integer bid);
+
 }
