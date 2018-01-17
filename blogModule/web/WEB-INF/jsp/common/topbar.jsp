@@ -14,7 +14,7 @@
         <ul class="top-ul">
             <li><a href="${pageContext.request.contextPath}/blog/selectBlog" >博客</a></li>
             <li><a href="${pageContext.request.contextPath}/fo/bbs">论坛</a></li>
-            <li><a href="">下载</a></li>
+            <li><a href="${pageContext.request.contextPath}/download/toDownload">下载</a></li>
             <li><a href="">商城</a></li>
         </ul>
         <div class="top-searchbox">

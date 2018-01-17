@@ -21,6 +21,14 @@
             <td><input type="text" name="description"></td>
         </tr>
         <tr>
+            <td>文件标题：</td>
+            <td><input type="text" name="title"></td>
+        </tr>
+        <tr>
+            <td>文件价格：</td>
+            <td><input type="text" name="price"></td>
+        </tr>
+        <tr>
             <td>请选择文件：</td>
             <td><input type="file" name="file"></td>
         </tr>
