@@ -25,18 +25,19 @@
                 <tr>
                     <input type="hidden" value="${blog.bid}" name="bid" id="bid"/>
                     <td><a href="">${blog.title}</a>&nbsp;&nbsp;<span>${blog.createTime}</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a class="del">删除</a></td>
+                    <td><a href="update?bid=${blog.bid}">修改</a>&nbsp;&nbsp;<span class="del"   onclick="javascript:deleteBlog(${blog.bid});">删除</span></td>
                 </tr>
 
                 </c:forEach>
             </table>
             <div class="function-page-blog-page">
-                <ul>
-                    <li>1/3</li>
-                    <li><a href="">首页</a></li>
-                    <li><a href="">上一页</a></li>
-                    <li><a href="">下一页</a></li>
-                    <li><a href="">末页</a></li>
+                <ul class="blog-list-page">
+                    <li>${pageSupport.currentPageNo}/${pageSupport.totalPageCount}</li>
+                    <li><a href="selectUserBlog?pageNo=1">首页</a></li>
+                    <c:if test="${pageSupport.currentPageNo>1}">
+                        <li><a href="selectUserBlog?pageNo=${pageSupport.currentPageNo-1}">上一页</a></li></c:if>
+                    <c:if test="${pageSupport.currentPageNo<pageSupport.totalPageCount}">  <li><a href="selectUserBlog?pageNo=${pageSupport.currentPageNo+1}">下一页</a></li></c:if>
+                    <li><a href="selectUserBlog?pageNo=${pageSupport.totalPageCount}">末页</a></li>
                 </ul>
             </div>
         </div>
@@ -45,22 +46,22 @@
     </body>
 </html>
 <script type="text/javascript">
-    $(function(){
-        $(".del").click(function(){
-            var bid = $('#bid').val();
+
+        function deleteBlog(bid){
+                  //  alert(bid)
             $.messager.confirm('消息','确定删除吗？',function(r){
                 if(r){
                     $.ajax({
                         type:'post',
-                        url:"/blog/",
+                        url:"/blog/removeBlog",
                         data:"bid="+bid,
                         dataType:'text',
                         success:callBcak
                     });
                 }
             })
-        })
-    })
+        }
+
 
     function callBcak (data){
         if(data == 'true'){

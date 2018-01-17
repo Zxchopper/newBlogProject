@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface UserMapper{
 	User getLoginUser(@Param("name") String name, @Param("pwd") String pwd);
+	User getUserByName(@Param("userName") String userName);
 	int insertUser(User user);
 	int updateUser(User user);
 	int deleteUser(@Param("uid") Integer id);

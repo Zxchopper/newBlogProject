@@ -18,8 +18,41 @@ public class BlogGenreServerImpl implements BlogGenreServer {
         return BlogGenreMapper.getBlogGenreAll();
     }
 
+    /**
+     * 新增
+     * @param blogGenre
+     * @return
+     */
     @Override
     public int insert(BlogGenre blogGenre) {
         return BlogGenreMapper.insert(blogGenre);
+    }
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean delete(Integer id) {
+        boolean flag = false;
+        if(BlogGenreMapper.delete(id)>0){
+            flag = true;
+        }
+        return flag;
+    }
+
+    /**
+     * 更新
+     * @param blogGenre
+     * @return
+     */
+    @Override
+    public boolean updata(BlogGenre blogGenre) {
+        boolean flag = false;
+        if(BlogGenreMapper.update(blogGenre)>0){
+            flag = true;
+        }
+        return flag;
     }
 }

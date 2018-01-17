@@ -54,4 +54,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="getLoginUser" resultType="User">
         select * from user where userName=#{name} and userPassword=#{pwd}
     </select>
+
+	<select id="getUserByName" resultType="User">
+		select * from user where userName=#{userName}
+	</select>
 </mapper>

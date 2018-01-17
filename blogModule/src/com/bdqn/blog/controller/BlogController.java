@@ -11,10 +11,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.HttpRequestHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -73,26 +70,42 @@ public class BlogController {
     }
 
     /**
-     * 调到增加页面
+     * 跳到增加页面
      *
      * @return
      */
     @RequestMapping(value = "/addPage", method = RequestMethod.GET)
-    public String addBlogPage() {
-
+    public String addBlogPage(Model model) {
+        List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
+        model.addAttribute("BlogGenres", BlogGenres);
         return "blog/blogBizAdd";
     }
 
     //修改博客
-    @RequestMapping("/modifyBlog")
-    public String modifyBlog(@RequestParam(value = "blog", required = false) Blog blog) {
-        if (blog != null) {
+    @RequestMapping(value = "/modifyBlog",method = RequestMethod.POST)
+    public String modifyBlog(@ModelAttribute(value = "blog") Blog blog) {
+        System.out.println("blog是"+blog.getBid());
+        if (blog != null&&blog.getBid()!=null) {
             blogService.modifyBlog(blog);
-            return "blogWelcome";
+            return "redirect:selectUserBlog";
         }
-        return null;
+        return "test";
     }
+    /**
+     * 跳去修改页面
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String updatePage(@RequestParam(value = "bid", required = false) Integer bid,Model model){
+        System.out.println("bid是"+bid);
+        if(bid !=null){
+         Blog blog=  blogService.selectByBid(bid);
+            List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
+            model.addAttribute("BlogGenres", BlogGenres);
+         model.addAttribute("blog",blog);
+       }
 
+        return "blog/blogBizModify";
+    }
     //删除博客
 
     /**
@@ -127,7 +140,7 @@ public class BlogController {
             pageSupport.setCurrentPageNo(pageNo);
         }
         System.out.println("uid" +"aaa" + ",title" + title + "pageNo" + (pageSupport.getCurrentPageNo() - 1) + "pageSize" + pageSupport.getPageSize());
-        List<Blog> blogs = blogService.selectAllBlog(null, title, pageSupport.getCurrentPageNo() - 1, pageSupport.getPageSize());
+        List<Blog> blogs = blogService.selectAllBlog(null, title, (pageSupport.getCurrentPageNo() - 1)*pageSupport.getPageSize(), pageSupport.getPageSize());
         System.out.println(blogs+"ggggaa");
         pageSupport.setTotalCount(blogService.totalCount(null, title));
 
@@ -150,20 +163,24 @@ public class BlogController {
 
         HttpSession Session = request.getSession();
         User user = (User) Session.getAttribute("user");
-       // Integer uid = user.getUid();
-        Integer  uid=3;
+        if(user==null){
+            return "test";
+        }
+        Integer uid = user.getUid();
+        System.out.println("uid是"+uid);
+
         if (pageNo != null) {
             pageSupport.setCurrentPageNo(pageNo);
         }
         System.out.println("uid" + uid + ",title" + title + "pageNo" + (pageSupport.getCurrentPageNo() - 1) + "pageSize" + pageSupport.getPageSize());
-        List<Blog> blogs = blogService.selectAllBlog(uid, title, pageSupport.getCurrentPageNo() - 1, pageSupport.getPageSize());
+        List<Blog> blogs = blogService.selectAllBlog(uid, title, (pageSupport.getCurrentPageNo() - 1)*pageSupport.getPageSize(), pageSupport.getPageSize());
 
-        System.out.println(blogs);
+        System.out.println("blogs是"+blogs);
         pageSupport.setTotalCount(blogService.totalCount(uid, title));
 
         pageSupport.setTotalPageCountByRs();
 
-        Model.addAttribute("pages", pageSupport);
+        Model.addAttribute("pageSupport", pageSupport);
         Model.addAttribute("blogs", blogs);
 
         return "blog/blogBizList";
@@ -176,5 +193,13 @@ public class BlogController {
     List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
     Model.addAttribute("BlogGenres", BlogGenres);
     return "blog/blogBizCategoryList";
-}
+    }
+
+    @RequestMapping("/view")
+    public String veiwBlog(Integer bid,Model model){
+        Blog blogByBid = blogService.getBlogByBid(bid);
+        model.addAttribute("blog",blogByBid);
+        return "blog/blogText";
+    }
+
 }
