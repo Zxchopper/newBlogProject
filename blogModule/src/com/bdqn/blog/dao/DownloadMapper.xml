@@ -5,10 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.bdqn.blog.dao.DownloadMapper">
 <insert id="insertDownload" parameterType="Download">
 	insert into Download
-	(did,createTime,title,describle,downloadPath,downloadAmout,
-	price)
-	values(#{did},#{createTime},#{title},#{describle},#{downloadPath},#{downloadAmout},
-	#{price})
+	(createTime,title,describle,downloadPath,price)
+	values(#{createTime},#{title},#{describle},#{downloadPath},#{price})
 </insert>
 <update id="updateDownload" parameterType="Download">
 	update Download
@@ -24,4 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <delete id="deleteDownload" parameterType="int">
 	delete from Download where did=#{did}
 </delete>
+	<select id="selectDownloadAll" resultType="Download">
+		select * from download
+	</select>
 </mapper>

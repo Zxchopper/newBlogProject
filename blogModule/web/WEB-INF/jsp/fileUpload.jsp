@@ -17,6 +17,14 @@
 <form action="upload" enctype="multipart/form-data" method="post">
     <table>
         <tr>
+            <td>文件标题：</td>
+            <td><input type="text" name="title"></td>
+        </tr>
+        <tr>
+            <td>文件价格：</td>
+            <td><input type="text" name="price"></td>
+        </tr>
+        <tr>
             <td>文件描述：</td>
             <td><input type="text" name="description"></td>
         </tr>

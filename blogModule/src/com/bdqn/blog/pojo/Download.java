@@ -57,5 +57,14 @@ public class Download {
 		this.price = price;
 	}
 
-	
+	public Download() {
+	}
+
+	public Download(Date createTime, String title, String describle, String downloadPath, Double price) {
+		this.createTime = createTime;
+		this.title = title;
+		this.describle = describle;
+		this.downloadPath = downloadPath;
+		this.price = price;
+	}
 }
