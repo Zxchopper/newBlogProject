@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.blog.dao.BlogCommentMapper">
+
+    <insert id="insertBlogcomment" parameterType="BlogComment">
+        INSERT INTO blogcomment(id,createTime,content,floor) VALUES (#{id},#{createTime},#{content},#{floor})
+    </insert>
+    <update id="updateBlogcomment" parameterType="BlogComment">
+        update blogcomment
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="createTime!=null">createTime=#{createTime},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="floor!=null">floor=#{floor},</if>
+        </trim>
+    </update>
+    <delete id="deleteBlogcomment" parameterType="Integer">
+        DELETE FROM blogcomment WHERE id=#{id}
+    </delete>
+    <select id="getBlogcommentList" resultType="Blogcomment">
+        SELECT c.createTime,c.content,c.floor FROM blogcomment c ORDER BY c.createTime DESC limit #{pageNo},#{pageSize}
+    </select>
+
+</mapper>
