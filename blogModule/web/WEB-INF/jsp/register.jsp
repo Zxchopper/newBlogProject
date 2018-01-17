@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册</title>
-    <link rel="stylesheet" href="/statics/css/register.css" type="text/css"/>
+    <link rel="stylesheet" href="/statics/css/Login&Register.css" type="text/css"/>
     <script type="text/javascript" src="../../statics/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" language="JavaScript">
         $(document).ready(function () {
@@ -37,7 +37,7 @@
 
 <section id="fr1">
     <h1 class="hr_1">新用户注册</h1>
-    <form action="" method="post">
+    <form action="doRegister" method="post">
 
         <dl>
             <dt><label for="email">邮箱</label></dt>

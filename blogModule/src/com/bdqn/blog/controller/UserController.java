@@ -57,7 +57,7 @@ public class UserController {
     /**
      * @author kanxueke
      */
-    @RequestMapping(value = "/doRegister", method=RequestMethod.GET)
+    @RequestMapping(value = "/doRegister", method=RequestMethod.POST)
     public String doRegister(User user,Model model){
         int count = userServer.doRegister(user);
         if(count>0){

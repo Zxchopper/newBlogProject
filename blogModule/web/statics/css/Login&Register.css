@@ -1,0 +1,96 @@
+/* CSS Document */
+*{
+    margin:0;
+    padding:0;
+    font-size:12px;
+    line-height:20px;
+}
+body {
+    margin-top: 50px;
+    font-family: "Microsoft YaHei";
+}
+
+#fr1{
+    width:525px;
+    margin: 0 auto;
+}
+
+.hr_1 {
+    width:525px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3275c3;
+    height: 42px;
+    border-bottom: 2px solid #3275c3;
+    vertical-align:baseline;
+    margin-bottom: 12px;
+    text-align:center;
+}
+
+#fr_form{
+    padding-top: 5px;
+    position: relative;
+    left: 34px;
+}
+
+dl{
+    clear: both;
+    height: 36px;
+    padding-top: 3px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+dl dt{
+    font-size: 35px;
+    text-align:right;
+    width:100px;
+    height:35px;
+    padding-right:8px;
+    padding-bottom: 3px;
+    float: left;
+}
+dl dt label{
+    font-size: 16px;
+    position: relative;
+    top: -3px;
+}
+
+dl dd{
+    float: left;
+    width:300px;
+}
+
+
+dl dd .btn{
+    width:130px;
+    height:48px;
+    margin-left: 40px;
+}
+
+dl dd input:not(.btn){
+    width:220px;
+    height:30px;
+    border:solid 1px #0066FF;
+}
+#fr1 .login_1{
+    height: 38px;
+    padding-left: 40px;
+    margin-top: 8px;
+}
+#fr1 #button{
+    height: 50px;
+    padding-left: 48px;
+    margin-top: 8px;
+}
+#fr1 .login{
+    height: 38px;
+    padding-left: 12px;
+    border-radius: 5px;
+    -moz-box-shadow:inset 0 0 5px ;
+    -webkit-box-shadow:inset 0 0 5px ;
+    box-shadow: inset 0 0 5px ;
+}
+
+#fr1 #forget{
+    text-align:center;
+}
