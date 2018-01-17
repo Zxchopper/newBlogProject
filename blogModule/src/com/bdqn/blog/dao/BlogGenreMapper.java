@@ -10,5 +10,8 @@ public interface BlogGenreMapper {
     List<BlogGenre> getBlogGenreAll();
 
     int insert(BlogGenre blogGenre);
+    int delete(BlogGenre blogGenre);
+    BlogGenre selectById(@RequestParam("id") Integer id);
+    int update(BlogGenre blogGenre);
 
 }

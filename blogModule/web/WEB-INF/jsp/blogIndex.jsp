@@ -20,7 +20,7 @@
 
                     <li>
                         <div class="blog-list-div">
-                            <a class="blog-list-title">title</a>
+                            <a class="blog-list-title">${blog.title}</a>
 
                             <p class="blog-list-p"><sapn>标题id${blog.genreId}</sapn>&nbsp;&nbsp;<span>用户id${blog.uid}</span>&nbsp;&nbsp;<span>${blog.createTime}</span></p>
                         </div>
@@ -31,7 +31,7 @@
                 <ul class="blog-list-page">
                     <li>${pages.currentPageNo}/${pages.totalPageCount}</li>
                     <li><a href="selectBlog?pageNo=1">首页</a></li>
-                    <c:if test="${pages.currentPageNo}>1">
+                    <c:if test="${pages.currentPageNo>1}">
                     <li><a href="selectBlog?pageNo=${pages.currentPageNo-1}">上一页</a></li></c:if>
 <c:if test="${pages.currentPageNo<pages.totalPageCount}">  <li><a href="selectBlog?pageNo=${pages.currentPageNo+1}">下一页</a></li></c:if>
                     <li><a href="selectBlog?pageNo=${pages.totalPageCount}">末页</a></li>
