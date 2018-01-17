@@ -1,8 +1,8 @@
 运行过程会覆盖当前数据库
 
-blog_noKey.sql
+g_noKey.sql
 	测试数据
-
+blo
 blog_tables_noKey_update.sql
 	新增插入正常数据的表单有
 		blog博客、forum论坛、download下载

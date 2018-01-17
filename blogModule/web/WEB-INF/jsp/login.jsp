@@ -37,11 +37,11 @@
         </dl>
         <dl>
             <dt>&nbsp;</dt>
-            <dd id="button"><input tabindex="3" name="" type="image" src="/statics/img/register.jpg" class="btn" value="登录" onclick="login()"/></dd>
+            <dd id="button"><input tabindex="3" name="" type="image" src="/statics/img/login.jpg" class="btn" value="登录" onclick="login()"/></dd>
         </dl>
         <dl>
             <dt>  </dt>
-            <dd id="forget"><a href="goLogin">没有账户？点击注册</a></dd>
+            <dd id="forget"><a href="goRegister">没有账户？点击注册</a></dd>
         </dl>
     </form>
 </section>

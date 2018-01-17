@@ -22,7 +22,7 @@
 /*文章列表*/
 .blog-list{
 	margin-left: 40px;
-	font-size: 2s0px;
+	font-size: 20px;
 }
 
 .blog-list span:nth-of-type(2){
@@ -39,9 +39,14 @@
 
 /*列表标题*/
 .blog-list-title{
+	display: inline-block;
 	font-size: 30px;
 	font-weight: 700;
 	margin-left: 20px;
+	max-width: 250px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 

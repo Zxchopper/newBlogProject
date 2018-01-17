@@ -7,58 +7,34 @@
 --%>
 <%--博客首页--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="WEB-INF/jsp/common/blogheader.jsp"%>
+<%@include file="common/blogheader.jsp"%>
 <!--这里是博客首页主体部分-->
         <div class="mainbody">
             <!--主题部分左边，博客列表-->
             <div class="mainbody-left">
                 <p class="blog-list"><span>文章列表</span><span>更多</span></p>
                 <ul>
+                    <c:forEach items="${blogs}" varStatus="status" var="blog">
+
+
+
                     <li>
                         <div class="blog-list-div">
-                            <a class="blog-list-title">title</a>
-                            <p class="blog-list-p"><sapn>分类</sapn>&nbsp;&nbsp;<span>作者</span>&nbsp;&nbsp;<span>2018-01-18</span></p>
+                            <a class="blog-list-title">${blog.title}</a>
+
+                            <p class="blog-list-p"><sapn>标题id${blog.genreId}</sapn>&nbsp;&nbsp;<span>用户id${blog.uid}</span>&nbsp;&nbsp;<span>${blog.createTime}</span></p>
                         </div>
                     </li>
+                    </c:forEach>
                 </ul>
-                <ul>
-                    <li>
-                        <div class="blog-list-div">
-                            <a class="blog-list-title">title</a>
-                            <p class="blog-list-p"><sapn>分类</sapn>&nbsp;&nbsp;<span>作者</span>&nbsp;&nbsp;<span>2018-01-18</span></p>
-                        </div>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <div class="blog-list-div">
-                            <a class="blog-list-title">title</a>
-                            <p class="blog-list-p"><sapn>分类</sapn>&nbsp;&nbsp;<span>作者</span>&nbsp;&nbsp;<span>2018-01-18</span></p>
-                        </div>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <div class="blog-list-div">
-                            <a class="blog-list-title">title</a>
-                            <p class="blog-list-p"><sapn>分类</sapn>&nbsp;&nbsp;<span>作者</span>&nbsp;&nbsp;<span>2018-01-18</span></p>
-                        </div>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <div class="blog-list-div">
-                            <a class="blog-list-title">title</a>
-                            <p class="blog-list-p"><sapn>分类</sapn>&nbsp;&nbsp;<span>作者</span>&nbsp;&nbsp;<span>2018-01-18</span></p>
-                        </div>
-                    </li>
-                </ul>
+
                 <ul class="blog-list-page">
-                    <li>1/4</li>
-                    <li><a href="#">首页</a></li>
-                    <li><a href="#">上一页</a></li>
-                    <li><a href="#">下一页</a></li>
-                    <li><a href="#">末页</a></li>
+                    <li>${pages.currentPageNo}/${pages.totalPageCount}</li>
+                    <li><a href="selectBlog?pageNo=1">首页</a></li>
+                    <c:if test="${pages.currentPageNo>1}">
+                    <li><a href="selectBlog?pageNo=${pages.currentPageNo-1}">上一页</a></li></c:if>
+<c:if test="${pages.currentPageNo<pages.totalPageCount}">  <li><a href="selectBlog?pageNo=${pages.currentPageNo+1}">下一页</a></li></c:if>
+                    <li><a href="selectBlog?pageNo=${pages.totalPageCount}">末页</a></li>
                 </ul>
             </div>
             <!--主体部分右边-->

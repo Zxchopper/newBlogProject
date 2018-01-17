@@ -7,13 +7,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertForum" parameterType="Forum">
 		insert into forum
 		(uid,fid,createTime,content,readAmout,rewardIntegral)
-		values(#{uid},#{fid},#{createTime},#{content},#{readAmout},#{rewardIntegral})
+		values(#{uid},#{fid},#{createTime},#{title},#{content},#{readAmout},#{rewardIntegral})
 	</insert>
 	<!--修改-->
 	<update id="updateForum" parameterType="Forum">
 		update forum
 		<trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
 			<if test="createTime!=null">createTime=#{createTime},</if>
+			<if test="title!=null">content=#{title},</if>
 			<if test="content!=null">content=#{content},</if>
 			<if test="readAmout!=null">readAmout=#{readAmout},</if>
 			<if test="rewardIntegral!=null">rewardIntegral=#{rewardIntegral},</if>
@@ -21,33 +22,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<!--删除-->
 	<delete id="deleteForum" parameterType="int">
-		delete from forum where id=#{id}
+		delete from forum where fid=#{fid}
 	</delete>
 	<!--分页-->
 	<resultMap id="forumList" type="Forum">
-		<id property="id" column="id"/>
+		<id property="fid" column="fid"/>
 		<result property="createTime" column="createTime"/>
+		<result property="title" column="title"/>
 		<result property="content" column="content"/>
 		<association property="user" resultMap="userName"/>
 		<association property="forumgenre" resultMap="forumgenreName"/>
 	</resultMap>
 	<resultMap id="userName" type="User">
-		<id property="id" column="u_id"/>
+		<id property="uid" column="uid"/>
 		<result property="userName" column="userName"/>
 	</resultMap>
 	<resultMap id="forumgenreName" type="Forumgenre">
-		<id property="id" column="fg_id"/>
+		<id property="id" column="id"/>
 		<result property="genreName" column="genreName"/>
 	</resultMap>
 
 
 	<select id="pageFind" resultMap="forumList">
-		SELECT f.*,fg.*,fg.id as fg_id,u.*,u.id AS u_id FROM (SELECT * FROM(SELECT * FROM forum ORDER BY createTime DESC) AS f1 limit #{pageNo},#{pageSize}) as f,
-			 forumgenre as fg,user as u WHERE f.fid=fg.id and f.uid=u.id
+		SELECT f.*,fg.*,u.*FROM (SELECT * FROM(SELECT * FROM forum ORDER BY createTime DESC) AS f1 limit #{currentPageNo},#{pageSize}) as f,
+			 forumgenre as fg,user as u WHERE f.genreId=fg.id and f.uid=u.uid
 	</select>
 
 	<select id="show" resultMap="forumList">
-		SELECT f.*,fg.*,fg.id as fg_id,u.*,u.id AS u_id FROM forum AS f,forumgenre as fg,user as u
-		WHERE id=#{id} and f.uid=u.id and f.fid=fg.id
+		SELECT f.*,fg.*,u.* FROM forum AS f,forumgenre as fg,user as u
+		WHERE id=#{id} and f.uid=u.uid and f.genreId=fg.id
+	</select>
+
+	<select id="totalCount" parameterType="int">
+		SELECT count(fid) FROM forum
 	</select>
 </mapper>

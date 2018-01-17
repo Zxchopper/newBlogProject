@@ -14,7 +14,7 @@
    <mvc:annotation-driven/>
    <context:component-scan base-package="com.bdqn.blog.controller"/>
    
-   <!--<mvc:annotation-driven>
+   <mvc:annotation-driven>
    		<mvc:message-converters>
    			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
    				<property name="supportedMediaTypes">
@@ -37,7 +37,7 @@
    				</property>
    			</bean>
    		</mvc:message-converters>
-   </mvc:annotation-driven>-->
+   </mvc:annotation-driven>
    
   <mvc:resources location="/statics/" mapping="/statics/**"></mvc:resources>
     

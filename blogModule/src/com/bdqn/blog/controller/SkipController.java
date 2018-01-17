@@ -1,9 +1,9 @@
 package com.bdqn.blog.controller;
 
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *  页面跳转控制器
@@ -34,10 +34,18 @@ public class SkipController {
        /* return  "bbs/bbsPartList";*/
       /* return  "bbs/bbsView";*/
       /*return  "blog/blogCategoryList";*/
-      /*return  "blog/blogBizList";*/
-       /* return  "blog/blogBizAdd";*/
-        return  "blog/blogBizCategoryList";
+      return  "blog/blogBizList";
         /*return  "blog/blogText";*/
+       /* return  "blog/blogBizAdd";*/
+        /*return  "blog/blogBizCategoryList";*/
         /*return "redirect:/bbsIndex.jsp";*/
+    }
+
+    @RequestMapping(value = "/test")
+    @ResponseBody
+    public Object forAjax(@RequestParam(value = "newCategory",required = false) String newCategory){
+        System.out.println("====>come in");
+        System.out.println(newCategory);
+        return "true";
     }
 }
