@@ -9,7 +9,9 @@ import java.util.List;
 public interface BlogGenreMapper {
     //获取博客所有分类
     List<BlogGenre> getBlogGenreAll();
-    //添加分类
+
+    BlogGenre selectById(@RequestParam("id") Integer id);
+    //新增
     int insert(BlogGenre blogGenre);
     //删除
     int delete(@Param("id") Integer id);
