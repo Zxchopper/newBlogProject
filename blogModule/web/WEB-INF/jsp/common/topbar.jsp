@@ -52,12 +52,12 @@
             </c:otherwise>
         </c:choose>
     </div>
-    <div class="top-second-navbar">
+    <%--<div class="top-second-navbar">
         <ul class="top-second-ul">
             <li><a href="" >分类1</a></li>
             <li><a href="">分类2</a></li>
             <li><a href="">分类3</a></li>
             <li><a href="">分类4</a></li>
         </ul>
-    </div>
+    </div>--%>
 </div>

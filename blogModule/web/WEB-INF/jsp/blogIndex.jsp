@@ -20,7 +20,7 @@
 
                     <li>
                         <div class="blog-list-div">
-                            <a class="blog-list-title">title</a>
+                            <a href="${pageContext.request.contextPath}/blog/view?bid=${blog.bid}" class="blog-list-title">${blog.title}</a>
 
                             <p class="blog-list-p"><sapn>标题id${blog.genreId}</sapn>&nbsp;&nbsp;<span>用户id${blog.uid}</span>&nbsp;&nbsp;<span>${blog.createTime}</span></p>
                         </div>

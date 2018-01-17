@@ -150,8 +150,8 @@ public class BlogController {
 
         HttpSession Session = request.getSession();
         User user = (User) Session.getAttribute("user");
-       // Integer uid = user.getUid();
-        Integer  uid=3;
+        Integer uid = user.getUid();
+        /*Integer  uid=3;*/
         if (pageNo != null) {
             pageSupport.setCurrentPageNo(pageNo);
         }
@@ -176,5 +176,12 @@ public class BlogController {
     List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
     Model.addAttribute("BlogGenres", BlogGenres);
     return "blog/blogBizCategoryList";
-}
+    }
+
+    @RequestMapping("/view")
+    public String veiwBlog(Integer bid,Model model){
+        Blog blogByBid = blogService.getBlogByBid(bid);
+        model.addAttribute("blog",blogByBid);
+        return "blog/blogText";
+    }
 }

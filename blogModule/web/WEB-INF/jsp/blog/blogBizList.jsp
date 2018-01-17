@@ -23,20 +23,23 @@
                 </tr>
                 <c:forEach items="${blogs}" var="blog" varStatus="status">
                 <tr>
-                    <input type="hidden" value="${blog.bid}" name="bid" id="bid"/>
-                    <td><a href="">${blog.title}</a>&nbsp;&nbsp;<span>${blog.createTime}</span></td>
-                    <td><a href="">修改</a>&nbsp;&nbsp;<a class="del">删除</a></td>
+                    <td><a href="${pageContext.request.contextPath}/blog/view?bid=${blog.bid}">${blog.title}</a>&nbsp;&nbsp;<span>${blog.createTime}</span></td>
+                    <td><a href="">修改</a>&nbsp;&nbsp;<a class="del" data-bid="${blog.bid}">删除</a></td>
                 </tr>
 
                 </c:forEach>
             </table>
             <div class="function-page-blog-page">
                 <ul>
-                    <li>1/3</li>
-                    <li><a href="">首页</a></li>
-                    <li><a href="">上一页</a></li>
-                    <li><a href="">下一页</a></li>
-                    <li><a href="">末页</a></li>
+                    <li>${pages.currentPageNo}/${pages.totalPageCount}</li>
+                    <li><a href="${pageContext.request.contextPath}/blog/selectUserBlog?pageNo=1">首页</a></li>
+                    <c:if test="${pages.currentPageNo}>1">
+                        <li><a href="${pageContext.request.contextPath}/blog/selectUserBlog?pageNo=${pages.currentPageNo-1}">上一页</a></li>
+                    </c:if>
+                    <c:if test="${pages.currentPageNo<pages.totalPageCount}">
+                        <li><a href="${pageContext.request.contextPath}/blog/selectUserBlog?pageNo=${pages.currentPageNo+1}">下一页</a></li>
+                    </c:if>
+                    <li><a href="${pageContext.request.contextPath}/blog/selectUserBlog?pageNo=${pages.totalPageCount}">末页</a></li>
                 </ul>
             </div>
         </div>
@@ -47,12 +50,12 @@
 <script type="text/javascript">
     $(function(){
         $(".del").click(function(){
-            var bid = $('#bid').val();
+           var bid = $(this).attr("data-bid")
             $.messager.confirm('消息','确定删除吗？',function(r){
                 if(r){
                     $.ajax({
                         type:'post',
-                        url:"/blog/",
+                        url:"/blog/removeBlog",
                         data:"bid="+bid,
                         dataType:'text',
                         success:callBcak
@@ -67,6 +70,8 @@
             $.messager.alert('消息','删除成功','info',function(){
                 location.href='/blog/selectUserBlog';
             })
+        }else{
+            $.messager.alert('消息','删除失败','info');
         }
     }
 </script>
