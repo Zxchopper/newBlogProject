@@ -99,6 +99,8 @@ public class BlogController {
         System.out.println("bid是"+bid);
         if(bid !=null){
          Blog blog=  blogService.selectByBid(bid);
+            List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
+            model.addAttribute("BlogGenres", BlogGenres);
          model.addAttribute("blog",blog);
        }
 
@@ -199,4 +201,5 @@ public class BlogController {
         model.addAttribute("blog",blogByBid);
         return "blog/blogText";
     }
+
 }

@@ -25,7 +25,7 @@
                 <tr>
                     <input type="hidden" value="${blog.bid}" name="bid" id="bid"/>
                     <td><a href="">${blog.title}</a>&nbsp;&nbsp;<span>${blog.createTime}</span></td>
-                    <td><a href="update?bid=${blog.bid}">修改</a>&nbsp;&nbsp;<a class="del">删除</a></td>
+                    <td><a href="update?bid=${blog.bid}">修改</a>&nbsp;&nbsp;<span class="del"   onclick="javascript:deleteBlog(${blog.bid});">删除</span></td>
                 </tr>
 
                 </c:forEach>
@@ -46,22 +46,22 @@
     </body>
 </html>
 <script type="text/javascript">
-    $(function(){
-        $(".del").click(function(){
-            var bid = $('#bid').val();
+
+        function deleteBlog(bid){
+                  //  alert(bid)
             $.messager.confirm('消息','确定删除吗？',function(r){
                 if(r){
                     $.ajax({
                         type:'post',
-                        url:"/blog/",
+                        url:"/blog/removeBlog",
                         data:"bid="+bid,
                         dataType:'text',
                         success:callBcak
                     });
                 }
             })
-        })
-    })
+        }
+
 
     function callBcak (data){
         if(data == 'true'){

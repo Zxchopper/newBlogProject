@@ -29,10 +29,10 @@
 
                 <div class="select">
                     类别：<select name="genreId">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    <c:forEach items="${BlogGenres}" var="blogGenre" varStatus="status">
+                        <option value="${ status.index + 1}">${blogGenre.genreName}</option>
+
+                    </c:forEach>
                 </select>
                 </div>
 
