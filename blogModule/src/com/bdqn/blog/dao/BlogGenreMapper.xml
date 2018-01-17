@@ -11,6 +11,12 @@
         insert into bloggenre (genreName)values(#{genreName})
 
     </insert>
-
+    <delete id="delete">
+        delete from bloggenre where id = #{id}
+    </delete>
+    
+    <update id="update" parameterType="blogGenre">
+        UPDATE bloggenre set genreName = #{genreName} where id = #{id}
+    </update>
 
 </mapper>
