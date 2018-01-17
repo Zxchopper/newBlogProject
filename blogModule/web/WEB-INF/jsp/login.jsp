@@ -28,12 +28,12 @@
         <dl>
             <dt>&nbsp;</dt>
             <dd class="login_1"><input id="userName1" name="name" tabindex="1" placeholder="输入字母开头的用户名" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}" class="login" type="text" required
-                                       value=""/><span></span></dd>
+                                       value="${user.userName}"/><span></span></dd>
         </dl>
         <dl>
             <dt>&nbsp;</dt>
             <dd class="login_1"><input id="userPassword1" name="pwd" tabindex="2" placeholder="输入密码，不少于6个字符" pattern="[a-zA-Z0-9]{6,20}" class="login" type="password" required
-                                       value=""/><span></span></dd>
+                                       value="${user.userPassword}"/><span></span></dd>
         </dl>
         <dl>
             <dt>&nbsp;</dt>
