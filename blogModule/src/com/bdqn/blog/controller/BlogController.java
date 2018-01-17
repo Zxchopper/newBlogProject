@@ -70,13 +70,14 @@ public class BlogController {
     }
 
     /**
-     * 调到增加页面
+     * 跳到增加页面
      *
      * @return
      */
     @RequestMapping(value = "/addPage", method = RequestMethod.GET)
-    public String addBlogPage() {
-
+    public String addBlogPage(Model model) {
+        List<BlogGenre> BlogGenres = blogGenreServer.getBlogGenreAll();
+        model.addAttribute("BlogGenres", BlogGenres);
         return "blog/blogBizAdd";
     }
 
@@ -160,20 +161,24 @@ public class BlogController {
 
         HttpSession Session = request.getSession();
         User user = (User) Session.getAttribute("user");
+        if(user==null){
+            return "test";
+        }
         Integer uid = user.getUid();
-        /*Integer  uid=3;*/
+        System.out.println("uid是"+uid);
+
         if (pageNo != null) {
             pageSupport.setCurrentPageNo(pageNo);
         }
         System.out.println("uid" + uid + ",title" + title + "pageNo" + (pageSupport.getCurrentPageNo() - 1) + "pageSize" + pageSupport.getPageSize());
         List<Blog> blogs = blogService.selectAllBlog(uid, title, (pageSupport.getCurrentPageNo() - 1)*pageSupport.getPageSize(), pageSupport.getPageSize());
 
-        System.out.println(blogs);
+        System.out.println("blogs是"+blogs);
         pageSupport.setTotalCount(blogService.totalCount(uid, title));
 
         pageSupport.setTotalPageCountByRs();
 
-        Model.addAttribute("pages", pageSupport);
+        Model.addAttribute("pageSupport", pageSupport);
         Model.addAttribute("blogs", blogs);
 
         return "blog/blogBizList";

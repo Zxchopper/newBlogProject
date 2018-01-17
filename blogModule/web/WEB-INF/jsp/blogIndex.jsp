@@ -150,6 +150,10 @@
                             <p>十五字，十五字，十五字，十五字，十五字</p>
                         </li>
                     </ul>
+                    <c:forEach items="${BlogGenres}" var="blogGenre" varStatus="status">
+                        ${blogGenre.genreName}
+
+                    </c:forEach>
                 </div>
             </div>
         </div>

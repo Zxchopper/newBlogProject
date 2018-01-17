@@ -32,12 +32,12 @@
             </table>
             <div class="function-page-blog-page">
                 <ul class="blog-list-page">
-                    <li>${pages.currentPageNo}/${pages.totalPageCount}</li>
+                    <li>${pageSupport.currentPageNo}/${pageSupport.totalPageCount}</li>
                     <li><a href="selectUserBlog?pageNo=1">首页</a></li>
-                    <c:if test="${pages.currentPageNo>1}">
-                        <li><a href="selectUserBlog?pageNo=${pages.currentPageNo-1}">上一页</a></li></c:if>
-                    <c:if test="${pages.currentPageNo<pages.totalPageCount}">  <li><a href="selectUserBlog?pageNo=${pages.currentPageNo+1}">下一页</a></li></c:if>
-                    <li><a href="selectUserBlog?pageNo=${pages.totalPageCount}">末页</a></li>
+                    <c:if test="${pageSupport.currentPageNo>1}">
+                        <li><a href="selectUserBlog?pageNo=${pageSupport.currentPageNo-1}">上一页</a></li></c:if>
+                    <c:if test="${pageSupport.currentPageNo<pageSupport.totalPageCount}">  <li><a href="selectUserBlog?pageNo=${pageSupport.currentPageNo+1}">下一页</a></li></c:if>
+                    <li><a href="selectUserBlog?pageNo=${pageSupport.totalPageCount}">末页</a></li>
                 </ul>
             </div>
         </div>

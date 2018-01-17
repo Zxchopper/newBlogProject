@@ -5,7 +5,7 @@
 <mapper namespace="com.bdqn.blog.dao.BlogGenreMapper">
 
 <select id="getBlogGenreAll" resultType="BlogGenre">
-    select * from bloggenre
+  select * from bloggenre
 </select>
     <insert id="insert" parameterType="blogGenre">
         insert into bloggenre (genreName)values(#{genreName})
