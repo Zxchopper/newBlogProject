@@ -39,9 +39,10 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       /* if(user !=null){
-            return "list.jsp";
-        }*/
+        if(user ==null){
+            request.setAttribute("error","登录失败,密码或用户名错误");
+            return "login";
+        }
 
         return "redirect:/blog/selectBlog";
 
@@ -76,6 +77,19 @@ public class UserController {
             return"login";
         }
         return "fail";
+    }
+
+    /**
+     * 退出功能
+     * @author linbingyang
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/exit")
+    public String exit(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.removeAttribute("user");
+        return "redirect:/blog/selectBlog";
     }
 
 }

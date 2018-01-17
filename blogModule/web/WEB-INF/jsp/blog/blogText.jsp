@@ -14,15 +14,11 @@
             <div class="mainbody-public-body">
                 <div class="mainbody-public-body-text">
                     <div class="mainbody-public-body-text-title">
-                        <h3>文章标题</h3>
-                        <span>作者名</span><span>2018-01-13</span><span>分类名</span>
+                        <h3>${blog.title}</h3>
+                        <span>${blog.uid}</span><span>${blog.createTime}</span><span>${blog.genreId}</span>
                     </div>
                     <div class="text">
-                        这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！<br />
-                        这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！<br />
-                        这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！<br />
-                        这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！<br />
-                        这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！这里是正文内容！！！！
+                       ${blog.contentPath}
                     </div>
                 </div>
                 <!--有用户登陆-->
